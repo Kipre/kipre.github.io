@@ -2,7 +2,7 @@
     "title": "Cyprien Neverov",
     "blogposts": [
     {
-        "link": "TODO",
+        "link": "https://kipre.github.io/projects/binary-mnist/",
         "title": "Binary MNIST",
         "date": "09/18/2020",
         "description": "Simplest ML problem solved with TFJS, a home-made dataset and visualized with D3."
