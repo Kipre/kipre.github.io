@@ -9,9 +9,23 @@
     },
     {
 
+        "link": "https://kipre.github.io/files/internship/reports/covid_time/",
+        "title": "SINDy: autonomous systems and explicit time-dependency",
+        "date": "07/15/2020",
+        "description": "Visualizing the differences between the identification of autonomous and time-dependent dynamics in COVID trajectories."
+    },
+    {
+
+        "link": "https://kipre.github.io/files/internship/reports/non-linear/nonlinear.html",
+        "title": "SINDy: non-polynomial candidate functions",
+        "date": "07/03/2020",
+        "description": "Plotting the difference in fitting data with the SINDy algorithm with rational basis functions."
+    },
+    {
+
         "link": "https://kipre.github.io/files/internship/reports/data-driven-covid-modeling/data-driven-covid-modeling.html",
-        "title": "Data-driven COVID modeling",
-        "date": "07/12/2020",
+        "title": "SINDy: data-driven COVID modeling",
+        "date": "06/11/2020",
         "description": "Using system-identification algorithms to explore the dynamics in COVID-related data."
     }],
     "publications": [
