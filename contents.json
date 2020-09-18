@@ -1,0 +1,41 @@
+{
+    "title": "Cyprien Neverov",
+    "blogposts": [
+    {
+        "link": "TODO",
+        "title": "Binary MNIST",
+        "date": "09/18/2020",
+        "description": "Simplest ML problem solved with TFJS, a home-made dataset and visualized with D3."
+    },
+    {
+
+        "link": "https://kipre.github.io/files/internship/reports/data-driven-covid-modeling/data-driven-covid-modeling.html",
+        "title": "Data-driven COVID modeling",
+        "date": "07/12/2020",
+        "description": "Using system-identification algorithms to explore the dynamics in COVID-related data."
+    }],
+    "publications": [
+    {
+        "link": "https://conf.researchr.org/details/mobilesoft-2020/mobilesoft-2020-vision/3/Vision-Alleviating-Android-Developer-Burden-on-Obfuscation",
+        "title": "Vision : Alleviating Android Developer Burden on Obfuscation.",
+        "conference": "MOBILESoft 2020 Visions",
+        "description": "A study of the obfuscation/minification usage in the open-source Android developement apps. A crowd-sourcing technique based on ML is proposed to help developers write more effective obfuscation and minification rules."
+    },
+    {
+        "link": "https://hal.archives-ouvertes.fr/hal-02294372/",
+        "title": "Modélisation incertaine à partir de mesures non-reproductibles. Application à la comparaison de pression exercée par des matelas.",
+        "conference": "LFA 2019",
+        "description": "Uncertain modeling of low-quality data from non-reproducible experiments. The goal is to allow uncertain hypothesis testing for unreliable data. The proposed techniques are applied to real-world clinical data of a comparison of two mattresses."
+    },
+    {
+        "link": "https://github.com/Kipre/files/blob/master/internship/reports/memoire/rapport.pdf",
+        "title": "Data-driven COVID modeling.",
+        "conference": "Final internship, 2020",
+        "description": "Report about my final internship at the chair of Applied Analysis at the Friedrich Alexander University in Erlangen under the supervision of Prof. Enrique Zuazua. We used system identification techniques in order to study the dynamics of COVID-related data."
+    }],
+    "socialLinks": {
+    	"LinkedIn": "https://www.linkedin.com/in/cyprien-n/",
+    	"GitHub": "https://github.com/Kipre",
+    	"Instagram": "https://www.instagram.com/cyprienneverov/"
+    }
+}

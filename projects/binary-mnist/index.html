@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Binary MNIST</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Binary MNIST</h1>
+        <h2>Simplest ML problem solved with TFJS and visualized with D3</h2>
+        <p>
+            This website showcases a simple example of using <a href="https://github.com/tensorflow/tfjs">tensorflow.js</a>
+            for a minimal computer vision problem.
+        The dataset was created specially for this example and can be further increased by adding hand-drawn examples.
+        This example is meant to show a "hello world" of the 2.0 stack: create the dataset, train, inspect, add examples, etc.
+    
+        
+        
+        
+        </p>
+        <p>Here are a few random examples of images from the dataset:</p>
+        <div id='examples'></div>
+        <p>
+            All of the images are of 20x20 pixels and there are <strong id='counter-0'></strong>
+            zeros and <strong id='counter-1'></strong>
+            ones in the database.
+        The actual data used by tfjs to train the model is a precompiled version of the dataset in order to save costly Firebase reading requests but the dataset can easily be updated.
+    
+        
+        
+        
+        </p>
+        <p>We implement an extremely simple neural network:</p>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Size</th>
+                        <th>Activation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Input</td>
+                        <td>400</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Dense layer</td>
+                        <td>64</td>
+                        <td>ReLU</td>
+                    </tr>
+                    <tr>
+                        <td>Dense layer</td>
+                        <td>32</td>
+                        <td>ReLU</td>
+                    </tr>
+                    <tr>
+                        <td>Dense layer</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>For this example, performance is not very important, that's why we simplify the architecture using only fully-connected layers.
+        Also, we do not use a softmax activation at the end because it would make the visualizations less interesting.</p>
+        <p>Below is a graph showing the output of the untrained model.
+        Each digit is placed at the coordinates that the untrained model predicted.
+        During the process of training, the model will learn to place the ones around the point of coordinate (0, 1) and the zeros at (1, 0).
+
+        
+        
+        
+        
+        
+        <div class='center-children'>
+            <div id='visualization'></div>
+        </div>
+        <div style='margin-top: 510px'></div>
+        <div class='center-children'>
+            <div id='train' tabindex="0" class="progress-btn">
+                <div class="btn">train model for 10 epochs</div>
+                <div id='progress' class="progress"></div>
+            </div>
+            <button id='reset'>reset model</button>
+        </div>
+        <p>The above graph updates itself during training and shows the evolution of the predicted coordinates of all the examples from the dataset.
+        If we train the model, can see that the model still struggles with some examples and doesn't manage to separate them all. 
+        The most common solution is to enhance the architecture: deepen the network, add covolutional layers... another solution is to add examples.</p>
+        <div class='center-children drawing-canvas'>
+            <legend>Drawing canvas</legend>
+            <canvas id='drawing-canvas' width='300' height='300'/>
+        </div>
+        <div class='center-children'>
+            <button id='clear'>clear</button>
+            <button id='evaluate'>evaluate</button>
+        </div>
+        <p>
+            The above canvas is for drawing digits and visualizing the output they produce on the graph. 
+        The evaluated new examples will appear in red. 
+        If the example doesn't show up on the graph it might be out of the domain (try to draw something simpler).
+        If you think that your example is good and will be useful for the future training of the model you can store it in the database by 
+        specifying the label here:
+        
+            
+            
+            
+            <label class="switch">
+                <label class="option zero">zero</label>
+                <label class="option one">one</label>
+                <input id='label' type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            and pressing this button: <button id='commit'>Commit</button>
+            or by pressing <kbd>Ctrl</kbd>
+            + <kbd>I</kbd>
+            .</p>
+<h4>Output console</h4>
+            <pre>
+            <code id='log'>
+        
+            </code>
+            <canvas id='printing-canvas' width='0' height='0'/>
+    
+            </pre>
+        <hr>
+        
+        <footer>
+      <small>Cyprien Neverov <a href='https://www.linkedin.com/in/cyprien-n/'>LinkedIn</a> | <a href="https://instagram.com/cyprienneverov">Instagram</a> | <a href="https://github.com/Kipre">GitHub</a>
+    </small>
+    </footer>
+        
+        
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="module" src="logic.js"></script>
+</html>

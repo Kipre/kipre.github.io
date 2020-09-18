@@ -1,0 +1,40 @@
+.card  h5 {
+    color: #6e6e6e;
+}
+
+.card h4 {
+    color: #5f8dbb;
+}
+
+.card {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.card:hover {
+    background: aliceblue;
+    transition: all 0.3s ease;
+}
+
+.card .titles {
+    display: flex;
+
+}
+
+.card .titles > * {
+    margin-top: 3px;
+    
+}
+
+.card .titles > h3 {
+width: 100%;
+}
+
+.card .titles > h5, h4 {
+    white-space: nowrap;
+}
+
+.card > p {
+    margin-top: 0px;
+}
