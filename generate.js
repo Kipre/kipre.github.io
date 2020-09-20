@@ -121,6 +121,8 @@ function main(contents) {
     // Make footer
     makeFooter(contents, doc);
 
+    console.log(doc.documentElement.outerHTML);
+
     document.write(doc.documentElement.outerHTML);
 
 }
