@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Neural UI</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Neural UI</h1>
+        <h2>Simple point dragging interaction powered by neural networks</h2>
+        <div class='center-children drawing-canvas'>
+            <legend>Deterministic canvas</legend>
+            <canvas id='drawing-canvas' width='32' height='32'/>
+        </div>
+        <div class='center-children'>
+            <button id='savefile'>save file</button>
+        </div>
+        <pre>
+            <code id='log'></code>
+        </pre>
+        <div class='center-children drawing-canvas'>
+            <legend>Testing canvas</legend>
+            <canvas id='testing-canvas' width='32' height='32'/>
+        </div>
+        <hr>
+        <footer>
+            <small>
+                Cyprien Neverov <a href='https://www.linkedin.com/in/cyprien-n/'>LinkedIn</a>
+                | <a href="https://instagram.com/cyprienneverov">Instagram</a>
+                | <a href="https://github.com/Kipre">GitHub</a>
+            </small>
+        </footer>
+    </body>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.3.0/dist/tf.min.js"></script>
+
+<!--     <script src="https://d3js.org/d3.v6.min.js"></script> -->
+    <script src="logic.js"></script>
+</html>

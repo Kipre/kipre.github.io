@@ -1,0 +1,20 @@
+canvas {
+    border: solid 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    height: 400px;
+    image-rendering: pixelated;
+}
+
+.drawing-canvas legend {
+    position: absolute;
+    color: black;
+    margin-top: -12px;
+    background: white;
+}
+
+.center-children {
+    display: flex;
+    justify-content: center
+}
