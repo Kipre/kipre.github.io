@@ -2,7 +2,10 @@ function createAndAppendCard(link, doc) {
 
     const result = doc.createElement('div');
     result.classList.add('card');
-    result.setAttribute('onclick', `location.href='${link}';`);
+    if (link) {
+        result.classList.add('clickable');
+        result.setAttribute('onclick', `location.href='${link}';`);
+    }
     return result;
 }
 
@@ -25,6 +28,17 @@ function publication(contents, doc) {
     titles.appendChild(mainTitle);
     titles.appendChild(conference);
     result.appendChild(titles);
+    result.appendChild(description);
+
+    return result;
+}
+
+function aboutMe(content, doc) {
+    const result = createAndAppendCard(content.link, doc);
+
+    const description = doc.createElement('p');
+    description.innerText = content.description;
+
     result.appendChild(description);
 
     return result;
@@ -91,6 +105,15 @@ function main(contents) {
     const mainHeader = doc.createElement('h1')
     mainHeader.innerText = contents.title
     doc.body.appendChild(mainHeader);
+
+    // Create horizontal line
+    doc.body.appendChild(doc.createElement('hr'));
+
+    // Create "About Me" section
+    const aboutMeHeader = doc.createElement('h2')
+    aboutMeHeader.innerText = 'About me'
+    doc.body.appendChild(aboutMeHeader);
+    doc.body.appendChild(aboutMe(contents.aboutMe, doc))
 
     // Create horizontal line
     doc.body.appendChild(doc.createElement('hr'));

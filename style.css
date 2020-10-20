@@ -10,14 +10,17 @@
     color: #5f8dbb;
 }
 
-.card {
+.clickable {
     cursor: pointer;
+}
+
+.card {
     padding: 10px;
     border-radius: 12px;
 }
 
 .card:hover {
-    background: aliceblue;
+    background: #e9f4fe;
     transition: all 0.3s ease;
 }
 
