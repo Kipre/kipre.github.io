@@ -12,14 +12,14 @@
   "education": [
     {
       "title": "Artificial Intelligence Engineer",
-      "date": "2017 - 2020",
+      "period": ["2017", "2020"],
       "institution": "Ecole des Mines",
       "city": "Alès",
       "desription": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
     },
     {
       "title": "Preparatory classes",
-      "date": "2015 - 2017",
+      "period": ["2015", "2017"],
       "institution": "Lycée La Merci",
       "city": "Montpellier",
       "desription": "Two-year undergraduate intensive course in mathematics and physics"
@@ -46,7 +46,7 @@
     },
     {
       "title": "Field Mission",
-      "company": "SMERGC",
+      "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
       "description": "Studied the market for the creation of a specialized hotel for academics"
     }
@@ -95,26 +95,7 @@
       "descrition": "Provided some web-based user experiences. This CV is generated using the web stack"
     }
   ],
-  "interests": [
-    {
-      "title": "Skateboarding, snowboarding, surfing"
-    },
-    {
-      "title": "Woodworking"
-    },
-    {
-      "title": "Electronics, Arduino"
-    },
-    {
-      "title": "Traveling"
-    },
-    {
-      "title": "Hiking"
-    },
-    {
-      "title": "Cliff-Jumping"
-    }
-  ],
+  "interests": ["Skateboarding",  "Woodworking",  "Electronics, Arduino",  "Traveling",  "Hiking",  "Cliff-Jumping"],
   "blogposts": [
     {
       "link": "https://kipre.github.io/projects/binary-mnist/",
@@ -157,7 +138,7 @@
     {
       "link": "https://github.com/Kipre/files/blob/master/internship/reports/memoire/rapport.pdf",
       "title": "Data-driven COVID modeling.",
-      "conference": "Final internship, 2020",
+      "conference": "Final Year Internship, 2020",
       "description": "Report about my final internship at the chair of Applied Analysis at the Friedrich Alexander University in Erlangen under the supervision of Prof. Enrique Zuazua. We used system identification techniques in order to study the dynamics of COVID-related data."
     }
   ],
