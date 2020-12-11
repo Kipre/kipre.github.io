@@ -15,14 +15,14 @@
       "period": ["2017", "2020"],
       "institution": "Ecole des Mines",
       "city": "Alès",
-      "desription": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
+      "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
     },
     {
       "title": "Preparatory classes",
       "period": ["2015", "2017"],
       "institution": "Lycée La Merci",
       "city": "Montpellier",
-      "desription": "Two-year undergraduate intensive course in mathematics and physics"
+      "description": "Two-year undergraduate intensive course in mathematics and physics"
     }
   ],
   "experience": [
