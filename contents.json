@@ -29,9 +29,9 @@
     {
       "title": "Final Year Internship",
       "period": ["03/2020", "07/2020"],
-      "company": "Friedrich-Alexander-Universitat",
+      "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
-      "description": "Working on data-driven modeling and system-identification out of data"
+      "description": "Worked on data-driven modeling and system-identification out of data"
     },
     {
       "title": "Research Internship",
@@ -77,26 +77,26 @@
       "level": "C1"
     }
   ],
-  "Skills": [
+  "skills": [
     {
       "technology": "Python",
-      "descrition": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API"
+      "description": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API"
     },
     {
       "technology": "C/C++",
-      "descrition": "Worked on a few personal projects and Python extensions"
+      "description": "Worked on a few personal projects and native Python extensions"
     },
     {
       "technology": "Java-Kotlin",
-      "descrition": "Worked on a few personal JVM powered projects"
+      "description": "Worked on a few personal JVM powered projects"
     },
     {
       "technology": "SQL/NoSQL",
-      "descrition": "Good understanding"
+      "description": "Good understanding"
     },
     {
       "technology": "JavaScript/Web",
-      "descrition": "Provided some web-based user experiences. This CV is generated using the web stack"
+      "description": "Provided some web-based user experiences. This CV is generated using the web stack"
     }
   ],
   "interests": ["Skateboarding",  "Woodworking",  "Electronics, Arduino",  "Traveling",  "Hiking",  "Cliff-Jumping"],
