@@ -28,24 +28,28 @@
   "experience": [
     {
       "title": "Final Year Internship",
+      "period": ["03/2020", "07/2020"],
       "company": "Friedrich-Alexander-Universitat",
       "city": "Erlangen, Germany",
       "description": "Working on data-driven modeling and system-identification out of data"
     },
     {
       "title": "Research Internship",
+      "period": ["05/2019", "08/2019"],
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
       "description": "Worked on generating obfuscation and minification rules using machine learning"
     },
     {
       "title": "Field Mission",
+      "period": ["11/2018", "12/2018"],
       "company": "Les Herbiers",
       "city": "Perpignan, France",
       "description": "Audited the company for the security of the employees"
     },
     {
       "title": "Field Mission",
+      "period": ["05/2018", "06/2018"],
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
       "description": "Studied the market for the creation of a specialized hotel for academics"
