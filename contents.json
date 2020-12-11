@@ -1,9 +1,109 @@
 {
     "title": "Cyprien Neverov",
-    "aboutMe": 
+    "aboutMe":
     {
+        "name": "Cyprien",
+        "lastname": "Neverov",
+        "address": "Montpellier Area, France",
+        "title": "Data Scientist",
+        "mobile": "+33 6 44 72 07 41",
+        "email": "cyprien.neverov[at]mines-ales.org",
         "description": "I recently graduated from IMT Mines Ales as an Artificial Intelligence Engineer. I'm passionate about working with data and developing tools that are linked to machine learning. I also enjoy designing data-driven visualizations and user experiences on the web."
     },
+    "education": [
+      {
+        "title": "Artificial Intelligence Engineer",
+        "date": "2017 - 2020",
+        "institution": "Ecole des Mines",
+        "city": "Alès",
+        "desription": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
+      },
+        {
+          "title": "Preparatory classes",
+          "date": "2015 - 2017",
+          "institution": "Lycée La Merci",
+          "city": "Montpellier",
+          "desription": "Two-year undergraduate intensive course in mathematics and physics"
+        }
+    ],
+    "experience": [
+      {
+        "title": "Final Year Internship",
+        "company": "Friedrich-Alexander-Universitat",
+        "city": "Erlangen, Germany",
+        "description": "Working on data-driven modeling and system identification out of data"
+      },
+        {
+          "title": "Research Internship",
+          "company": "ISCLab, Universidad de Chile",
+          "city": "Santiago, Chile",
+          "description": "Worked on generating obfuscation and minification rules using machine learning"
+        },
+          {
+            "title": "Field Mission",
+            "company": "Les Herbiers",
+            "city": "Perpignan, France",
+            "description": "Audited the company for the security of the employees"
+          },
+            {
+              "title": "Field Mission",
+              "company": "SMERGC",
+              "city": "Privas, France",
+              "description": "Studied the market for the creation of a specialized hotel for academics"
+            }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "level": "TOEIC 965",
+      },
+        {
+          "language": "French",
+          "level": "Billingual",
+        },
+          {
+            "language": "Russian",
+            "level": "Billingual",
+          },
+            {
+              "language": "Spanish",
+              "level": "C1",
+            },
+              {
+                "language": "Catalan",
+                "level": "C1",
+              }
+    ],
+    "Skills": [
+      {
+        "technology": "Python",
+        "descrition": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API"
+      },
+        {
+          "technology": "C/C++",
+          "descrition": "Worked on a few personal projects and Python extensions"
+        },
+          {
+            "technology": "Java-Kotlin",
+            "descrition": "Worked on a few personal JVM powered projects"
+          },
+            {
+              "technology": "SQL/NoSQL",
+              "descrition": "Good understanding"
+            },
+              {
+                "technology": "JavaScript/Web",
+                "descrition": "Provided some web-based user experiences. This CV is generated using the web stack"
+              }
+    ],
+    "interests": [
+      {"title": "Skateboarding, snowboarding, surfing"},
+        {"title": "Woodworking"},
+          {"title": "Electronics, Arduino"},
+          {"title": "Traveling"},
+          {"title": "Hiking"},
+          {"title": "Cliff-Jumping"}
+    ],
     "blogposts": [
     {
         "link": "https://kipre.github.io/projects/binary-mnist/",
@@ -53,6 +153,7 @@
     }],
     "socialLinks": {
     	"LinkedIn": "https://www.linkedin.com/in/cyprien-n/",
+    	"Website": "https://kipre.github.io/",
     	"GitHub": "https://github.com/Kipre",
     	"Instagram": "https://www.instagram.com/cyprienneverov/"
     }
