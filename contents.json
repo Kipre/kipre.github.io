@@ -79,24 +79,24 @@
   ],
   "skills": [
     {
-      "technology": "Python",
+      "title": "Python",
       "description": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API"
     },
     {
-      "technology": "C/C++",
+      "title": "C/C++",
       "description": "Worked on a few personal projects and native Python extensions"
     },
     {
-      "technology": "Java-Kotlin",
+      "title": "Java-Kotlin",
       "description": "Worked on a few personal JVM powered projects"
     },
     {
-      "technology": "SQL/NoSQL",
+      "title": "SQL/NoSQL",
       "description": "Good understanding"
     },
     {
-      "technology": "JavaScript/Web",
-      "description": "Provided some web-based user experiences. This CV is generated using the web stack"
+      "title": "JavaScript/Web",
+      "description": "Provided some web-based user experiences and visualizations (D3). This CV is generated using the web stack"
     }
   ],
   "interests": ["Skateboarding",  "Woodworking",  "Electronics, Arduino",  "Traveling",  "Hiking",  "Cliff-Jumping"],
