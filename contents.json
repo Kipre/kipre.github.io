@@ -12,14 +12,20 @@
   "education": [
     {
       "title": "Artificial Intelligence Engineer",
-      "period": ["2017", "2020"],
+      "period": [
+        "2017",
+        "2020"
+      ],
       "institution": "Ecole des Mines",
       "city": "Alès",
       "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
     },
     {
       "title": "Preparatory classes",
-      "period": ["2015", "2017"],
+      "period": [
+        "2015",
+        "2017"
+      ],
       "institution": "Lycée La Merci",
       "city": "Montpellier",
       "description": "Two-year undergraduate intensive course in mathematics and physics"
@@ -28,28 +34,40 @@
   "experience": [
     {
       "title": "Final Year Internship",
-      "period": ["03/2020", "07/2020"],
+      "period": [
+        "03/2020",
+        "07/2020"
+      ],
       "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
       "description": "Worked on data-driven modeling and system-identification out of data"
     },
     {
       "title": "Research Internship",
-      "period": ["05/2019", "08/2019"],
+      "period": [
+        "05/2019",
+        "08/2019"
+      ],
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
       "description": "Worked on generating obfuscation and minification rules using machine learning"
     },
     {
       "title": "Field Mission",
-      "period": ["11/2018", "12/2018"],
+      "period": [
+        "11/2018",
+        "12/2018"
+      ],
       "company": "Les Herbiers",
       "city": "Perpignan, France",
       "description": "Audited the company for the security of the employees"
     },
     {
       "title": "Field Mission",
-      "period": ["05/2018", "06/2018"],
+      "period": [
+        "05/2018",
+        "06/2018"
+      ],
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
       "description": "Studied the market for the creation of a specialized hotel for academics"
@@ -87,7 +105,7 @@
       "description": "Worked on a few personal projects and native Python extensions"
     },
     {
-      "title": "Java-Kotlin",
+      "title": "Java/Kotlin",
       "description": "Worked on a few personal JVM powered projects"
     },
     {
@@ -99,7 +117,29 @@
       "description": "Provided some web-based user experiences and visualizations (D3). This CV is generated using the web stack"
     }
   ],
-  "interests": ["Skateboarding",  "Woodworking",  "Electronics, Arduino",  "Traveling",  "Hiking",  "Cliff-Jumping"],
+  "interests": [
+    {
+      "description": "Skateboarding"
+    },
+    {
+      "description": "Woodworking"
+    },
+    {
+      "description": "Electronics"
+    },
+    {
+      "description": "Arduino"
+    },
+    {
+      "description": "Traveling"
+    },
+    {
+      "description": "Hiking"
+    },
+    {
+      "description": "Cliff-Jumping"
+    }
+  ],
   "blogposts": [
     {
       "link": "https://kipre.github.io/projects/binary-mnist/",
