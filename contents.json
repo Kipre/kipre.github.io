@@ -11,63 +11,63 @@
   },
   "education": [
     {
-      "title": "Artificial Intelligence Engineer",
       "period": [
         "2017",
         "2020"
       ],
+      "title": "Artificial Intelligence Engineer",
       "institution": "Ecole des Mines",
-      "city": "Alès",
+      "city": "Alès, France",
       "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
     },
     {
-      "title": "Preparatory classes",
       "period": [
         "2015",
         "2017"
       ],
+      "title": "Preparatory classes",
       "institution": "Lycée La Merci",
-      "city": "Montpellier",
+      "city": "Montpellier, France",
       "description": "Two-year undergraduate intensive course in mathematics and physics"
     }
   ],
   "experience": [
     {
-      "title": "Final Year Internship",
       "period": [
         "03/2020",
         "07/2020"
       ],
+      "title": "Final Year Internship",
       "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
       "description": "Worked on data-driven modeling and system-identification out of data"
     },
     {
-      "title": "Research Internship",
       "period": [
         "05/2019",
         "08/2019"
       ],
+      "title": "Research Internship",
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
       "description": "Worked on generating obfuscation and minification rules using machine learning"
     },
     {
-      "title": "Field Mission",
       "period": [
         "11/2018",
         "12/2018"
       ],
+      "title": "Field Mission",
       "company": "Les Herbiers",
       "city": "Perpignan, France",
       "description": "Audited the company for the security of the employees"
     },
     {
-      "title": "Field Mission",
       "period": [
         "05/2018",
         "06/2018"
       ],
+      "title": "Field Mission",
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
       "description": "Studied the market for the creation of a specialized hotel for academics"
@@ -125,6 +125,9 @@
       "description": "Woodworking"
     },
     {
+      "description": "Design"
+    },
+    {
       "description": "Electronics"
     },
     {
@@ -168,21 +171,21 @@
   ],
   "publications": [
     {
+      "conference": "MOBILESoft 2020 Visions",
       "link": "https://conf.researchr.org/details/mobilesoft-2020/mobilesoft-2020-vision/3/Vision-Alleviating-Android-Developer-Burden-on-Obfuscation",
       "title": "Vision : Alleviating Android Developer Burden on Obfuscation.",
-      "conference": "MOBILESoft 2020 Visions",
       "description": "A study of the obfuscation/minification usage in the open-source Android developement apps. A crowd-sourcing technique based on ML is proposed to help developers write more effective obfuscation and minification rules."
     },
     {
+      "conference": "LFA 2019",
       "link": "https://hal.archives-ouvertes.fr/hal-02294372/",
       "title": "Modélisation incertaine à partir de mesures non-reproductibles. Application à la comparaison de pression exercée par des matelas.",
-      "conference": "LFA 2019",
       "description": "Uncertain modeling of low-quality data from non-reproducible experiments. The goal is to allow uncertain hypothesis testing for unreliable data. The proposed techniques are applied to real-world clinical data of a comparison of two mattresses."
     },
     {
+      "conference": "Final Year Internship, 2020",
       "link": "https://github.com/Kipre/files/blob/master/internship/reports/memoire/rapport.pdf",
       "title": "Data-driven COVID modeling.",
-      "conference": "Final Year Internship, 2020",
       "description": "Report about my final internship at the chair of Applied Analysis at the Friedrich Alexander University in Erlangen under the supervision of Prof. Enrique Zuazua. We used system identification techniques in order to study the dynamics of COVID-related data."
     }
   ],
