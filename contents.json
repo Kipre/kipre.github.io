@@ -18,7 +18,7 @@
       "title": "Artificial Intelligence Engineer",
       "institution": "Ecole des Mines",
       "city": "Alès, France",
-      "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data"
+      "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data."
     },
     {
       "period": [
@@ -28,7 +28,7 @@
       "title": "Preparatory classes",
       "institution": "Lycée La Merci",
       "city": "Montpellier, France",
-      "description": "Two-year undergraduate intensive course in mathematics and physics"
+      "description": "Two-year undergraduate intensive course in mathematics and physics."
     }
   ],
   "experience": [
@@ -98,23 +98,23 @@
   "skills": [
     {
       "title": "Python",
-      "description": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API"
+      "description": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API."
     },
     {
       "title": "C/C++",
-      "description": "Worked on a few personal projects and native Python extensions"
+      "description": "Worked on a few personal projects and native Python extensions."
     },
     {
       "title": "Java/Kotlin",
-      "description": "Worked on a few personal JVM powered projects"
+      "description": "Worked on a few personal JVM powered projects."
     },
     {
       "title": "SQL/NoSQL",
-      "description": "Good understanding"
+      "description": "Good understanding."
     },
     {
       "title": "JavaScript/Web",
-      "description": "Provided some web-based user experiences and visualizations (D3). This CV is generated using the web stack"
+      "description": "Provided some web-based user experiences and visualizations (D3). This CV is generated using the web stack."
     }
   ],
   "interests": [
