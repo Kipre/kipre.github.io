@@ -40,7 +40,7 @@
       "title": "Final Year Internship",
       "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
-      "description": "Worked on data-driven modeling and system-identification out of data"
+      "description": "Worked on data-driven modeling and system-identification out of data. Implemented state-of-the-art system identification models in Python. Deployed a POC service to identify dynamics from data with Flask."
     },
     {
       "period": [
@@ -50,7 +50,7 @@
       "title": "Research Internship",
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
-      "description": "Worked on generating obfuscation and minification rules using machine learning"
+      "description": "Worked on generating obfuscation and minification rules using machine learning. Investigated methodologies for estimating the likelyhood of parts of code to be vulnerable to obfuscation. Wrote an article (see publications)."
     },
     {
       "period": [
@@ -60,7 +60,7 @@
       "title": "Field Mission",
       "company": "Les Herbiers",
       "city": "Perpignan, France",
-      "description": "Audited the company for the security of the employees"
+      "description": "Audited the company for the security of the employees. Updated the internal company welcome booklet."
     },
     {
       "period": [
@@ -70,7 +70,7 @@
       "title": "Field Mission",
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
-      "description": "Studied the market for the creation of a specialized hotel for academics"
+      "description": "Studied the market for the creation of a specialized hotel for academics."
     }
   ],
   "languages": [
@@ -80,11 +80,11 @@
     },
     {
       "language": "French",
-      "level": "Billingual"
+      "level": "Native"
     },
     {
       "language": "Russian",
-      "level": "Billingual"
+      "level": "Native"
     },
     {
       "language": "Spanish",
