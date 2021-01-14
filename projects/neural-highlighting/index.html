@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <title>neural highlighting</title>
+    <head>
+        <link href="style.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css">
+    </head>
+    <body>
+        <h1>Highlight code using neural networks</h1>
+        
+        <h2>Where does this problem comes from?</h2>
+        <p>I spent a few weeks writing my own <a href='https://kipre.github.io/ted/'>web-based text editor</a>. 
+           This was already a quite hard task for me. My web developement skills are quite limited, however, modern javascript and web standards
+           make it easier than it was a few years ago. The main challenges were linked to making it responsive enough to provide a good user 
+           experience. I ended up creating a set of lines in the viewport and updating their content with respect to a custom scroll location.
+           This allowed to drasticly reduce the number of DOM elements and thus keep the rendering time constant, as opposed to rendering the whole
+           document, even if most of it is not visible, it takes time to compute the layout. The naive approach would start to loose scrolling smoothness
+           as soon as documents had more than 2000 lines. 
+           Overall I was quite happy with this preliminary result, at least in terms of functionality. It was absolutely clear, however, that it
+           would not be possible to use it as a daily code editor if it wasn't able to highlight code.
+        </p>
+        <h2>How is code highlighted in other code editors?</h2>
+        <p>I started to look at the different ways code editors are implementing syntax highlighting. The closest editor to my project is 
+           <a href='https://codemirror.net/'>CodeMirror</a>, this is probably the most popular web based text editor, apparently it powers 
+           Chrome Dev Tools, Jupyter and a big number of other important projects. I looked a few times at CodeMirror when I had some design questions 
+           but overall I tried to come up with my own solutions. The current version of CodeMirror relies on an interface that allows to 
+           implement a tokenizer and parser for every language and these parsers exist for almost a hundred different languages. 
+           At first it seemed to be a good idea to somehow make these "languages" pluggable into my editor, but I soon realized that I would 
+           have to write a lot of boilerplate to accomodate the differences in the ways the editors work.
+        </p>
+        <p>One important design choice of my editor was to rely on as little third party code as possible, and adapt it so that it can rely on some 
+           internal code of another code editor was obviously not a solution. Then, I discovered that the creator of CodeMirror was working on the 
+           <a href='https://codemirror.net/6/'>next version</a> of the editor and that they created a dedicated parser for this new version. 
+           The parser is called <a href='https://lezer.codemirror.net/'>Lezer</a> and it is an attempt at solving the challenges that are 
+           encountered in syntax highlighting:
+           <ul>
+               <li>must be general enough to adapt to any language;</li>
+               <li>must provide fast incremental update of the parsed tree;</li>
+               <li>must be robust enough not to brake in the presence of syntax errors.</li>
+           </ul>
+           This parser is inspired from another project called <a href='https://tree-sitter.github.io/tree-sitter/'>Tree Sitter</a> that powers 
+           syntax highlighting of the <a href='https://atom.io/'>Atom</a> editor and maybe some parts of GitHub. Tree Sitter is written in 
+           Rust and C which makes its integration into a web project slightly harder.
+        </p>
+        <p>At this point, seeing how complex it is to create a highlight system, I thought that it might be a good idea to rely on AI for this task.
+           Since modern models can achieve such amazing results for natural language, it should be easier for them to understand
+           the structure of code.
+        </p>
+        <h2>Neural highlighting</h2>
+        <p>I started with the simplest architecture I could imagine: a window of characters as the input and the category of the central character
+           as the output.
+        </p>
+        <div style='text-align: center'>
+            <img width='400px' src='assets/naive_nn.svg'></img>
+        </div>
+        <p>The problem with this approach is that it requires a lot of inferences to compute the highlighting of a single line (one per character).
+           The next logical step was to have an input and an output window, the output window being smaller to give the model more context.
+           This worked well but I still 
+        </p>
+    </body>
+</html>
