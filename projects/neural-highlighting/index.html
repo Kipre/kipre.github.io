@@ -47,6 +47,7 @@
            the structure of code.
         </p>
         <h2>Neural highlighting</h2>
+        <h3>Simplest approach</h3>
         <p>I started with the simplest architecture I could imagine: a window of characters as the input and the category of the central character
            as the output.
         </p>
@@ -55,10 +56,34 @@
         </div>
         <p>The problem with this approach is that it requires a lot of inferences to compute the highlighting of a single line (one per character).
            The next logical step was to have an input and an output window, the output window being smaller to give the model more context.
-           This worked well but I still 
+           This worked better but I still wasn't very happy with the highlighting results because the model was missclassifying some very obvious 
+           letters (like inside language keywords).
         </p>
+        <h3>Web Workers</h3>
+        <p>One of my concerns when making the model bigger and bigger was that eventually the model would become too slow for real-time inference
+           in the browser and would then make the UI unusable.
+           When I made some tests in the editor I quickly realized that the UI froze way too much even for the smallest models.
+           But if we delegate the inference to a web worker and update the view as soon as some highlighting results appear we are no longer 
+           limited by the model size and the editor becomes responsive again.
+           The fact that the colors come with some delay after opening the document or typing doesn't hurt my user experience at all.
+        </p>
+        <h3>Transformers</h3>
         <div style='text-align: center'>
             <img width='400px' src='assets/transformer.svg'></img>
         </div>
+        <p>The next obvious step was to use the transformer architecture in the models and withoud much surprise it significantly enhanced the results.
+           Another simplification was to use an output window with the same size as the input one.
+           This allowed to have more flexibility and avoided cubersome padding before the input sequence.
+           It also allowed us to see how much context the model needs to give the best predictions for a character by plotting the accuracy 
+           position-wise.
+        </p>
+        <div style='text-align: center'>
+            <img width='500px' src='assets/accuracy.svg'></img>
+        </div>
+        <p>The graph clearly shows that the model needs at least 15 characters before and after to give the best prediction.
+           It is also interesting to note that the model performs slightly better on the last character than on the first one and that overall the
+           last characters of the window are less affected by the lack of context than the those in the beginning of the window.
+           
+        </p>
     </body>
 </html>
