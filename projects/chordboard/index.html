@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <title>chordboard</title>
+    <head></head>
+    <style>
+        .mid {
+            border: solid 1px aliceblue;
+            border-radius: 5px;
+        }
+
+        .monitor > .disp {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 20px;
+            height: 50px;
+        }
+
+        .column {
+            width: 50%;
+            float: left;
+        }
+
+        .row > .letter {
+            font-size: 25px;
+            text-align: right;
+            margin-right: 10px;
+            display: inline-block;
+            width: 130px;
+        }
+
+        .blocks {
+            display: inline-block;
+        }
+
+        .black, .white {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: solid 1px black;
+        }
+
+        .black {
+            background: #8f8f8f;
+        }
+
+        .white {
+            background: #3b3b3b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            html {
+                background: #272727;
+                color: white;
+            }
+
+            .black {
+                background: #131313;
+            }
+
+            .white {
+                background: sepia;
+            }
+
+            .black, .white {
+                border: solid 1px #cccccc;
+            }
+        }
+    </style>
+    <body></body>
+    <script>
+
+        const config = {
+            elementsPerCol: 15,
+            monitorWidth: 20
+        }
+
+        const corpus = `That can I.
+At least, the whisper goes so. Our last king,
+Whose image even but now appear'd to us,
+Was, as you know, by Fortinbras of Norway,
+Thereto prick'd on by a most emulate pride,
+Dar'd to the combat in which our valiant Hamlet
+For so this side of our known world esteem'd him
+Did slay this Fortinbras who, by a seal'd compact,
+Well ratified by law and heraldry,
+Did forfeit, with his life, all those his lands
+Which he stood seiz'd of, to the conqueror
+Against the which a moiety competent
+Was gaged by our king which had return'd
+To the inheritance of Fortinbras,
+Had he been vanquisher, as, by the same cov'nant
+And carriage of the article design'd,
+His fell to Hamlet. Now, sir, young Fortinbras,
+Of unimproved mettle hot and full,
+Hath in the skirts of Norway, here and there,
+Shark'd up a list of lawless resolutes,
+For food and diet, to some enterprise
+That hath a stomach in't which is no other,
+As it doth well appear unto our state,
+But to recover of us, by strong hand
+And terms compulsatory, those foresaid lands
+So by his father lost and this, I take it,
+Is the main motive of our preparations,
+The source of this our watch, and the chief head
+Of this post-haste and romage in the land.`;
+
+        class Helper {
+            constructor(corpus) {
+                this.corpus = corpus;
+                this.currentChar = 0;
+                this.strokes = 0;
+                this.goodStrokes = 0;
+
+                const container = document.createElement('div');
+                container.classList.add('monitor');
+
+                this.span = document.createElement('div');
+                this.span.classList.add('disp');
+                this.score = document.createElement('div');
+                this.score.classList.add('score');
+
+                container.appendChild(this.span);
+                container.appendChild(this.score);
+                document.body.appendChild(container);
+
+                this.render();
+            }
+
+            input(char) {
+                if (char === this.corpus[this.currentChar]) {
+                    this.currentChar += 1;
+                    this.goodStrokes += 1;
+                    if (this.currentChar > this.corpus.length - 1) {
+                        alert('finished');
+                    }
+                }
+                this.strokes += 1;
+                this.render()
+            }
+
+            render() {
+                const seq = this.sequence();
+                const [before,inside,after] = [seq.slice(0, config.monitorWidth), seq[config.monitorWidth], seq.slice(config.monitorWidth + 1)];
+                this.span.innerHTML = `${before}<span class="mid">${inside}</span>${after}`;
+                this.score.innerText = (this.goodStrokes / this.strokes) || 1;
+            }
+
+            sequence() {
+                const [c,w,l] = [this.currentChar, config.monitorWidth, this.corpus.length];
+                return ' '.repeat(Math.max(0, w - c)) + this.corpus.slice(Math.max(0, c - w), c + w) + ' '.repeat(Math.max(0, c + w - l))
+            }
+        }
+
+        const monitor = new Helper(corpus.toLocaleLowerCase().replace(/(\r\n|\n|\r)/gm, " "));
+        const textarea = document.querySelector("#input");
+
+        const keyToPos = {
+            'b': 0,
+            'j': 1,
+            'k': 2,
+            'l': 3,
+            'm': 4
+        }
+
+        const combinations = [[[[['~', 'i'], ['o', 'r']], [['a', 'c'], ['h', 'u']]], [[['t', 'w'], ['l', 'f']], [['s', 'y'], ['m', 'p']]]], [[[['e', 'v'], ['g', 'k']], [['d', 'x'], ['b', 'z']]], [[['n', '~space'], ['j', '~comma']], [['q', '~dot'], ['~tick', '~backspace']]]]];
+
+        const map = {};
+
+        for (let a = 0; a < 2; a++)
+            for (let b = 0; b < 2; b++)
+                for (let c = 0; c < 2; c++)
+                    for (let d = 0; d < 2; d++)
+                        for (let e = 0; e < 2; e++) {
+                            const letter = combinations[a][b][c][d][e];
+                            map[[a, b, c, d, e].toString()] = letter;
+                        }
+
+        function objectFlip(obj) {
+            const ret = {};
+            Object.keys(obj).forEach(key=>{
+                ret[obj[key]] = key;
+            }
+            );
+            return ret;
+        }
+
+        const comb = objectFlip(map);
+
+        console.log(comb);
+
+        const container = document.createElement('div');
+        container.classList.add('container');
+
+        const columns = [document.createElement('div'), document.createElement('div')];
+        columns.forEach(c=>{
+            c.classList.add('column');
+            container.appendChild(c)
+        }
+        );
+
+        for (const [i,h] of Object.keys(comb).sort().entries()) {
+            const row = document.createElement('div');
+            row.classList.add('row');
+
+            const letter = document.createElement('div');
+            letter.classList.add('letter')
+            letter.innerText = h;
+
+            const blocks = document.createElement('div');
+            blocks.classList.add('blocks');
+
+            const fingers = comb[h].split(',').map(i=>parseInt(i))
+            for (let g = 0; g < 5; g++) {
+                const block = document.createElement('div');
+                block.classList.add(fingers[g] ? 'black' : 'white');
+                blocks.appendChild(block);
+            }
+
+            row.appendChild(letter);
+            row.appendChild(blocks);
+            columns[i > config.elementsPerCol ? 1 : 0].appendChild(row);
+        }
+
+        document.body.appendChild(container);
+
+        const valid = Object.keys(keyToPos);
+
+        let state = [0, 0, 0, 0, 0];
+
+        window.addEventListener('keydown', e=>{
+            if (valid.includes(e.key)) {
+                e.preventDefault();
+                state[keyToPos[e.key]] = 1;
+            } else {
+                console.log('wrong key', e.key)
+            }
+        }
+        );
+        window.addEventListener('keyup', e=>{
+            e.preventDefault();
+            if (state[keyToPos[e.key]]) {
+                const [a,b,c,d,e] = state;
+                const letter = combinations[a][b][c][d][e];
+                if (letter.length == 1) {
+                    monitor.input(letter);
+                    //                 } else if (letter == '~backspace') {
+                    //                     monitor.input(letter);
+                } else if (letter == '~dot') {
+                    monitor.input('.');
+                } else if (letter == '~tick') {
+                    monitor.input("'");
+                } else if (letter == '~comma') {
+                    monitor.input(',');
+                } else if (letter == '~space') {
+                    monitor.input(' ');
+                } else
+                    console.log(letter);
+            }
+            state = [0, 0, 0, 0, 0];
+        }
+        );
+    </script>
+</html>
