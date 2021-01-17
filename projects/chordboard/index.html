@@ -8,7 +8,11 @@
             border-radius: 5px;
         }
 
-        .monitor > .disp {
+        .wrong {
+            color: red;
+        }
+
+        .disp, .wrong {
             font-family: monospace;
             white-space: pre;
             font-size: 20px;
@@ -118,9 +122,12 @@ Of this post-haste and romage in the land.`;
                 this.span.classList.add('disp');
                 this.score = document.createElement('div');
                 this.score.classList.add('score');
+                this.wrong = document.createElement('div');
+                this.wrong.classList.add('wrong');
 
                 container.appendChild(this.span);
                 container.appendChild(this.score);
+                container.appendChild(this.wrong);
                 document.body.appendChild(container);
 
                 this.render();
@@ -133,6 +140,9 @@ Of this post-haste and romage in the land.`;
                     if (this.currentChar > this.corpus.length - 1) {
                         alert('finished');
                     }
+                    this.wrong.innerText = "";
+                } else {
+                    this.wrong.innerText = char;
                 }
                 this.strokes += 1;
                 this.render()
@@ -151,8 +161,7 @@ Of this post-haste and romage in the land.`;
             }
         }
 
-        const monitor = new Helper(corpus.toLocaleLowerCase().replace(/(\r\n|\n|\r)/gm, " "));
-        const textarea = document.querySelector("#input");
+        const monitor = new Helper(corpus.toLocaleLowerCase().replace(/(\r\n|\n|\r)/gm, " ").replace(/([.',])/gm, ""));
 
         const keyToPos = {
             'b': 0,
@@ -162,31 +171,52 @@ Of this post-haste and romage in the land.`;
             'm': 4
         }
 
-        const combinations = [[[[['~', 'i'], ['o', 'r']], [['a', 'c'], ['h', 'u']]], [[['t', 'w'], ['l', 'f']], [['s', 'y'], ['m', 'p']]]], [[[['e', 'v'], ['g', 'k']], [['d', 'x'], ['b', 'z']]], [[['n', '~space'], ['j', '~comma']], [['q', '~dot'], ['~tick', '~backspace']]]]];
-
-        const map = {};
-
-        for (let a = 0; a < 2; a++)
-            for (let b = 0; b < 2; b++)
-                for (let c = 0; c < 2; c++)
-                    for (let d = 0; d < 2; d++)
-                        for (let e = 0; e < 2; e++) {
-                            const letter = combinations[a][b][c][d][e];
-                            map[[a, b, c, d, e].toString()] = letter;
-                        }
-
-        function objectFlip(obj) {
-            const ret = {};
-            Object.keys(obj).forEach(key=>{
-                ret[obj[key]] = key;
-            }
-            );
-            return ret;
+        const charToComb = {
+            a: '1,0,0,0,0',
+            b: '0,1,0,0,1',
+            c: '1,0,1,1,1',
+            d: '1,0,1,0,0',
+            e: '0,1,0,0,0',
+            f: '1,1,0,1,0',
+            g: '1,0,1,1,0',
+            h: '0,1,1,1,1',
+            i: '0,0,1,0,0',
+            j: '1,1,1,0,1',
+            k: '1,0,0,1,0',
+            l: '0,0,1,1,0',
+            m: '0,1,0,1,0',
+            n: '1,1,0,0,0',
+            o: '0,0,0,1,0',
+            p: '1,1,0,0,1',
+            q: '0,1,1,0,1',
+            r: '1,1,1,1,0',
+            s: '0,0,0,1,1',
+            t: '0,1,1,0,0',
+            u: '0,0,0,0,1',
+            v: '1,1,0,1,1',
+            w: '1,0,1,0,1',
+            x: '0,1,0,1,1',
+            y: '1,0,0,0,1',
+            z: '0,0,1,0,1',
+            ['﹇']: '1,1,1,1,1',
+            ['⌫']: '0,1,1,1,0',
+            ['⤶']: '1,0,0,1,1',
         }
 
-        const comb = objectFlip(map);
+        const combToChar = {};
+        let charToChar = {}
 
-        console.log(comb);
+        for (h in charToComb) {
+            combToChar[charToComb[h]] = h;
+            charToChar[h] = h;
+        }
+
+        charToChar = {
+            ...charToChar,
+            ['﹇']: ' ',
+            ['⤶']: '\n',
+            ['⌫']: undefined
+        }
 
         const container = document.createElement('div');
         container.classList.add('container');
@@ -198,7 +228,7 @@ Of this post-haste and romage in the land.`;
         }
         );
 
-        for (const [i,h] of Object.keys(comb).sort().entries()) {
+        for (const [i,h] of Object.keys(charToComb).entries()) {
             const row = document.createElement('div');
             row.classList.add('row');
 
@@ -209,7 +239,7 @@ Of this post-haste and romage in the land.`;
             const blocks = document.createElement('div');
             blocks.classList.add('blocks');
 
-            const fingers = comb[h].split(',').map(i=>parseInt(i))
+            const fingers = charToComb[h].split(',').map(i=>parseInt(i))
             for (let g = 0; g < 5; g++) {
                 const block = document.createElement('div');
                 block.classList.add(fingers[g] ? 'black' : 'white');
@@ -239,22 +269,8 @@ Of this post-haste and romage in the land.`;
         window.addEventListener('keyup', e=>{
             e.preventDefault();
             if (state[keyToPos[e.key]]) {
-                const [a,b,c,d,e] = state;
-                const letter = combinations[a][b][c][d][e];
-                if (letter.length == 1) {
-                    monitor.input(letter);
-                    //                 } else if (letter == '~backspace') {
-                    //                     monitor.input(letter);
-                } else if (letter == '~dot') {
-                    monitor.input('.');
-                } else if (letter == '~tick') {
-                    monitor.input("'");
-                } else if (letter == '~comma') {
-                    monitor.input(',');
-                } else if (letter == '~space') {
-                    monitor.input(' ');
-                } else
-                    console.log(letter);
+                const letter = charToChar[combToChar[state.join()]];
+                monitor.input(letter);
             }
             state = [0, 0, 0, 0, 0];
         }
