@@ -145,6 +145,12 @@
   ],
   "blogposts": [
     {
+      "link": "https://kipre.github.io/projects/neural-highlighting/",
+      "title": "Neural Highlighting",
+      "date": "01/19/2021",
+      "description": "Implementing a syntax highlighting system only using neural networks."
+    },
+    {
       "link": "https://kipre.github.io/projects/binary-mnist/",
       "title": "Binary MNIST",
       "date": "09/18/2020",

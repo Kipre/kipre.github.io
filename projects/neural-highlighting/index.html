@@ -8,6 +8,8 @@
     <body>
         <h1>Highlight code using neural networks</h1>
         
+        <div style='font-size: smaller'>Cyprien Neverov, January 19, 2021</div>
+        
         <h2>Where does this problem comes from?</h2>
         <p>I spent a few weeks writing my own <a href='https://kipre.github.io/ted/'>web-based text editor</a>. 
            This was already a quite hard task for me. My web developement skills are quite limited, however, modern javascript and web standards
@@ -71,7 +73,7 @@
         <div style='text-align: center'>
             <img width='400px' src='assets/transformer.svg'></img>
         </div>
-        <p>The next obvious step was to use the transformer architecture in the models and withoud much surprise it significantly enhanced the results.
+        <p>The next obvious step was to use the transformer architecture in the models and without much surprise it significantly enhanced the results.
            Another simplification was to use an output window with the same size as the input one.
            This allowed to have more flexibility and avoided cubersome padding before the input sequence.
            It also allowed us to see how much context the model needs to give the best predictions for a character by plotting the accuracy 
@@ -83,7 +85,144 @@
         <p>The graph clearly shows that the model needs at least 15 characters before and after to give the best prediction.
            It is also interesting to note that the model performs slightly better on the last character than on the first one and that overall the
            last characters of the window are less affected by the lack of context than the those in the beginning of the window.
-           
+           This sounds very intuitive because programming languages are usually written from left to right.
         </p>
+        <div class="widget-html-content"><style type="text/css">
+        /* Based on Sublime Text's Monokai theme */
+span.comment {color: #75715e;}
+span.operator {color: #ae81ff;}
+span.number {color: #ae81ff;}
+span.cm-comment.cm-attribute {color: #97b757;}
+span.cm-comment.cm-def {color: #bc9262;}
+span.cm-comment.cm-tag {color: #bc6283;}
+span.cm-comment.cm-type {color: #5998a6;}
+span.property {color: #a6e22e;}
+span.function {color: #ede6ab;}
+span.function-builtin {color: #ede6ab;/* font-family: monospace; */font-style: italic;}
+span.function-method {color: #44baf2;}
+span.keyword {color: #f92672;}
+span.variable-builtin {color: #66d9ef;}
+span.string {color: #e6db74;}
+span.variable {color: #f8f8f2;}
+span.constant-builtin {color: #ff9eb7;}
+span.punctuation-special {color: #a0a0a0;}
+span.string-special {color: #60d79c;}
+span.cm-bracket {color: #f8f8f2;}
+span.cm-tag {color: #f92672;}
+span.variable-parameter {color: #a894cc;}
+span.cm-link {color: #ae81ff;}
+span.cm-error {background: #f92672;color: #f8f8f0;}
+        </style><pre style="background: #282828; color: #fff;line-height: 17px;tab-size: 4;"><code style="background: #282828;color: #fff">☆			<span class="keyword">return</span><span class="nothing"> </span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="constant-builtin">undefined</span><span class="nothing"> </span><span class="operator">&amp;&amp;</span><span class="nothing"> </span><span class="variable">parts</span><span class="nothing">[</span><span class="number">1</span><span class="nothing">] ?
+					</span><span class="variable-builtin">this</span><span class="nothing">.</span><span class="function-method">data</span><span class="nothing">( </span><span class="variable">parts</span><span class="nothing">[</span><span class="number">0</span><span class="nothing">] ) :
+					</span><span class="variable">data</span><span class="nothing">;
+			}
+
+			</span><span class="variable">parts</span><span class="nothing">[</span><span class="number">1</span><span class="nothing">] </span><span class="operator">=</span><span class="nothing"> </span><span class="variable">value</span><span class="nothing">;
+			</span><span class="variable-builtin">this</span><span class="nothing">.</span><span class="function-method">each</span><span class="nothing">(</span><span class="keyword">function</span><span class="nothing">() {
+				</span><span class="keyword">var</span><span class="nothing"> </span><span class="variable">self</span><span class="nothing"> </span><span class="operator">=</span><span class="nothing"> </span><span class="function">jQuery</span><span class="nothing">( </span><span class="variable-builtin">this</span><span class="nothing"> );
+
+				</span><span class="variable">self</span><span class="nothing">.</span><span class="function-method">triggerHandler</span><span class="nothing">( </span><span class="string">"setData"</span><span class="nothing"> </span><span class="operator">+</span><span class="nothing"> </span><span class="variable">part</span><span class="nothing">, </span><span class="variable">parts</span><span class="nothing"> );
+				</span><span class="variable">jQuery</span><span class="nothing">.</span><span class="function-method">data</span><span class="nothing">( </span><span class="variable-builtin">this</span><span class="nothing">, </span><span class="variable">key</span><span class="nothing">, </span><span class="variable">value</span><span class="nothing"> );☆
+				</span><span class="variable">self</span><span class="nothing">.</span><span class="function-method">triggerHandler</span><span class="nothing">( </span><span class="string">"changeData"</span><span class="nothing"> </span><span class="operator">+</span><span class="nothing"> </span><span class="variable">part</span><span class="nothing">, </span><span class="variable">parts</span><span class="nothing"> );
+			});
+		}, </span><span class="constant-builtin">null</span><span class="nothing">, </span><span class="variable">value</span><span class="nothing">, </span><span class="variable-builtin">arguments</span><span class="nothing">.</span><span class="property">length</span><span class="nothing"> </span><span class="operator">&gt;</span><span class="nothing"> </span><span class="number">1</span><span class="nothing">, </span><span class="constant-builtin">null</span><span class="nothing">, </span><span class="constant-builtin">false</span><span class="nothing"> );
+	},
+
+	</span><span class="function-method">removeData</span><span class="nothing">: </span><span class="keyword">function</span><span class="nothing">( </span><span class="variable-parameter">key</span><span class="nothing"> ) {
+		</span><span class="keyword">return</span><span class="nothing"> </span><span class="variable-builtin">this</span><span class="nothing">.</span><span class="function-method">each</span><span class="nothing">(</span><span class="keyword">function</span><span class="nothing">() {
+			</span><span class="variable">jQuery</span><span class="nothing">.</span><span class="function-method">removeData</span><span class="nothing">( </span><span class="variable-builtin">this</span><span class="nothing">, </span><span class="variable">key</span><span class="nothing"> );
+		});
+	}
+});
+
+</span><span class="keyword">function</span><span class="nothing"> </span><span class="function">dataAttr</span><span class="nothing">( </span><span class="variable-parameter">el☆em</span><span class="nothing">, </span><span class="variable-parameter">key</span><span class="nothing">, </span><span class="variable-parameter">data</span><span class="nothing"> ) {
+	</span><span class="comment">// If nothing was found internally, try to fetch any</span><span class="nothing">
+	</span><span class="comment">// data from the HTML5 data-* attribute</span><span class="nothing">
+	</span><span class="keyword">if</span><span class="nothing"> ( </span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="constant-builtin">undefined</span><span class="nothing"> </span><span class="operator">&amp;&amp;</span><span class="nothing"> </span><span class="variable">elem</span><span class="nothing">.</span><span class="property">nodeType</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="number">1</span><span class="nothing"> ) {
+
+		</span><span class="keyword">var</span><span class="nothing"> </span><span class="variable">name</span><span class="nothing"> </span><span class="operator">=</span><span class="nothing"> </span><span class="string">"data-"</span><span class="nothing"> </span><span class="operator">+</span><span class="nothing"> </span><span class="variable">key</span><span class="nothing">.</span><span class="function-method">replace</span><span class="nothing">( </span><span class="variable">rmultiDash</span><span class="nothing">, </span><span class="string">"-$1"</span><span class="nothing"> ).</span><span class="function-method">toLowerCase</span><span class="nothing">();
+
+		</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">=</span><span class="nothing"> </span><span class="variable">elem</span><span class="nothing">.</span><span class="function-method">getA☆ttribute</span><span class="nothing">( </span><span class="variable">name</span><span class="nothing"> );
+
+		</span><span class="keyword">if</span><span class="nothing"> ( </span><span class="keyword">typeof</span><span class="nothing"> </span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="string">"string"</span><span class="nothing"> ) {
+			</span><span class="keyword">try</span><span class="nothing"> {
+				</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">=</span><span class="nothing"> </span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="string">"true"</span><span class="nothing"> ? </span><span class="constant-builtin">true</span><span class="nothing"> :
+				</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="string">"false"</span><span class="nothing"> ? </span><span class="constant-builtin">false</span><span class="nothing"> :
+				</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="string">"null"</span><span class="nothing"> ? </span><span class="constant-builtin">null</span><span class="nothing"> :
+				</span><span class="comment">// Only convert to a number if it doesn't change the string</span><span class="nothing">
+				</span><span class="operator">+</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">+</span><span class="nothing"> </span><span class="string">""</span><span class="nothing"> </span><span class="comment">=</span><span class="operator">==</span><span class="nothing"> </span><span class="variable">data</span><span class="nothing"> ? </span><span class="operator">+</span><span class="variable">data</span><span class="nothing"> ☆:
+				</span><span class="variable">rbrace</span><span class="nothing">.</span><span class="function-method">test</span><span class="nothing">( </span><span class="variable">data</span><span class="nothing"> ) ? </span><span class="variable">jQuery</span><span class="nothing">.</span><span class="function-method">parseJSON</span><span class="nothing">( </span><span class="variable">data</span><span class="nothing"> ) :
+					</span><span class="variable">data</span><span class="nothing">;
+			} </span><span class="keyword">catch</span><span class="nothing">( </span><span class="variable">e</span><span class="nothing"> ) {}
+
+			</span><span class="comment">// Make sure we set the data so it isn't changed later</span><span class="nothing">
+			</span><span class="variable">jQuery</span><span class="nothing">.</span><span class="function-method">data</span><span class="nothing">( </span><span class="variable">elem</span><span class="nothing">, </span><span class="variable">key</span><span class="nothing">, </span><span class="variable">data</span><span class="nothing"> );
+
+		} </span><span class="keyword">else</span><span class="nothing"> {
+			</span><span class="variable">data</span><span class="nothing"> </span><span class="operator">=</span><span class="nothing"> </span><span class="constant-builtin">undefined</span><span class="nothing">;
+		}
+	}
+
+	</span><span class="keyword">return</span><span class="nothing"> </span><span class="variable">data</span><span class="nothing">;
+}
+
+</span><span class="comment">// checks a cache o☆bject for emptiness</span><span class="nothing">
+</span><span class="keyword">function</span><span class="nothing"> </span><span class="function">isEmptyDataObject</span><span class="nothing">( </span><span class="variable-parameter">obj</span><span class="nothing"> ) {
+	</span><span class="keyword">var</span><span class="nothing"> </span><span class="variable">name</span><span class="nothing">;
+	</span><span class="keyword">for</span><span class="nothing"> ( </span><span class="variable">name</span><span class="nothing"> </span><span class="keyword">in</span><span class="nothing"> </span><span class="variable">obj</span><span class="nothing"> ) {
+
+		</span><span class="comment">// if the public data object is empty, the private is still empty</span><span class="nothing">
+		</span><span class="keyword">if</span><span class="nothing"> ( </span><span class="variable">name</span><span class="nothing"> </span><span class="operator">===</span><span class="nothing"> </span><span class="string">"data"</span><span class="nothing"> </span><span class="operator">&amp;&amp;</span><span class="nothing"> </span><span class="variable">jQuery</span><span class="nothing">.</span><span class="function-method">isEmptyObject</span><span class="nothing">( </span><span class="variable">obj</span><span class="nothing">[</span><span class="variable">name</span><span class="nothing">] ) ) {
+			</span><span class="keyword">continue</span><span class="nothing">;
+		}
+		</span><span class="keyword">if</span><span class="nothing"> ( </span><span class="variable">name</span><span class="nothing"> !== </span></code></pre></div>
+        
+        <h3>Recurrent Networks</h3>
+        <p>I decided not to investigate the use of recurrent neural networks for this task because I didn't want to deal with the 
+           problems that arise from the use of a recurrent architecture (state management/caching, longer training). However, it might 
+           be interesting to see how they compare to transformers for this task.
+        </p>
+        <h2>Limitations</h2>
+        <p>Of course this method will not allow to replace a parser, or at least, it currently doesn't. 
+           The biggest limitation is probably the difference in the outputed information. A parser outputs a syntax tree whereas the model only 
+           outputs a sequence of categories.
+           A syntax tree gives way more information than just the categories of of the tokens, like the context (variable declaration, 
+           function invocation...) or eventual syntax errors.
+           This kind of richer information is not strictly necessary for syntax highlighting but can enable very powerful editor features 
+           like autocomlpletion, identifier search, auto-indentation and code reformatting.
+        </p>
+        <p>The other obvious drawback is that the quality of basic highlighting is still far from perfect. Even though the test score
+           of the model is over 97%, those remaining 3% are very visible on the screen.
+        </p>
+        <p>Another less visible problem is that the dataset for the training is based on open-soure GitHub projects, and was compiled 
+           some time ago.
+           Even though most developers now use JS transpilers and write the most modern code that later gets translated to run on
+           the widest range of browsers possible, the majority of the code from the dataset seems to be quite old in terms of javasript.
+           This is very visible around <code>const</code> and <code>let</code> keywords that are much less well identified that 
+           <code>var</code>. Arrow functions also seem to confuse the model.
+        </p>
+        <h2>Conclusion</h2>
+        <p>Neural code highlighting is very interesting and promising in my opinion, with relatively little effort I was able to get 
+           respectable results. Writing a parser/tokenizer with similar functionality would be a least 20 times the amount 
+           of effort I put into making this.
+           Moreover, I believe that in order to adapt the model to another language I would only have to swap the last few layers as opposed 
+           to writing a whole new language syntax specification.
+        </p>
+        <p>I will keep working on this project because I am quite sure I will use my editor as a primary coding tool from now on.
+           Machine Learning applied to coding tools is a very interesting and somehow underdeveloped field. The most prevalent 
+           project in this domain is probably <a href='https://www.tabnine.com/'>TabNine</a> which uses a modification of GPT-2 to
+           make intelligent code completions. I think that eventually the model should be trained with prediction in mind
+           which opens a lot of possibilities for more intelligent features in the editor.
+        </p>
+        
+        <hr>
+        
+        <footer>
+          <small>Cyprien Neverov <a href='https://www.linkedin.com/in/cyprien-n/'>LinkedIn</a> | <a href="https://instagram.com/cyprienneverov">Instagram</a> | <a href="https://github.com/Kipre">GitHub</a>
+          </small>
+        </footer>
     </body>
+            
 </html>
+
+
