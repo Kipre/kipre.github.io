@@ -115,7 +115,7 @@
 
             for (const [key,value] of Object.entries(content)) {
                 var element;
-                if (specs[key] === 'ignore') {
+                if (specs[key] === 'ignore' || key === 'type') {
                     continue;
                 }
                 element = document.createElement(specs[key]?.type ? specs[key].type : 'span');
@@ -256,10 +256,6 @@
                     content = content.filter(filter);
                 createSection(content, spec);
             }
-
-//             createSection(contents.experience.filter(c=>c.type !== 'mission'), );
-
-//             createSection(contents.publications.slice(0, 2), );
         }
 
         fetch("./contents.json").then(res=>res.json()).then(json=>main(json));
