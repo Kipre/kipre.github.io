@@ -34,12 +34,24 @@
   "experience": [
     {
       "period": [
+        "03/2021",
+        "now"
+      ],
+      "title": "Data Scientist",
+      "company": "D3S",
+      "city": "Grenoble, France",
+      "type": "job",
+      "description": "Working as a \"full-stack data-scientist\" at D3S, a small consulting company specialised in AI powered industial manufacturing cost prediction. "
+    },
+    {
+      "period": [
         "03/2020",
         "07/2020"
       ],
       "title": "Final Year Internship",
       "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
+      "type": "internship",
       "description": "Worked on data-driven modeling and system-identification out of data. Implemented state-of-the-art system identification models in Python. Deployed a POC service to identify dynamics from data with Flask."
     },
     {
@@ -50,6 +62,7 @@
       "title": "Research Internship",
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
+      "type": "internship",
       "description": "Worked on generating obfuscation and minification rules using machine learning. Investigated methodologies for estimating the likelyhood of parts of code to be vulnerable to obfuscation. Wrote an article (see publications)."
     },
     {
@@ -60,6 +73,7 @@
       "title": "Field Mission",
       "company": "Les Herbiers",
       "city": "Perpignan, France",
+      "type": "mission",
       "description": "Audited the company for the security of the employees. Updated the internal company welcome booklet."
     },
     {
@@ -70,6 +84,7 @@
       "title": "Field Mission",
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",
+      "type": "mission",
       "description": "Studied the market for the creation of a specialized hotel for academics."
     }
   ],
@@ -98,23 +113,23 @@
   "skills": [
     {
       "title": "Python",
-      "description": "Proficient in Python and its main data-related libraries (Pandas, NumPy, TensorFlow, Catboost, Spacy...) as well as some experience with the C API."
+      "description": "Proficient in Python (5+ years of experience) as well as some experience with the C API."
     },
     {
       "title": "C/C++",
       "description": "Worked on a few personal projects and native Python extensions."
     },
     {
+      "title": "JavaScript/Web",
+      "description": "Proficient in JavaScript/CSS/HTML (2+ years of experience). Solid knowledge of React and Redux. Passionate about web-based data experiences powered by D3.js."
+    },
+    {
+      "title": "SQL/MongoDB",
+      "description": "Good knowledge of SQL and experience with non-relational DBs like MongoDB. "
+    },
+    {
       "title": "Java/Kotlin",
       "description": "Worked on a few personal JVM powered projects."
-    },
-    {
-      "title": "SQL/NoSQL",
-      "description": "Good understanding."
-    },
-    {
-      "title": "JavaScript/Web",
-      "description": "Provided some web-based user experiences and visualizations (D3). This CV is generated using the web stack."
     }
   ],
   "interests": [

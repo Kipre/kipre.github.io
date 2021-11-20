@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </header>
+    <style>
+        @media print {
+            body {
+                margin: 0;
+                border: 0px;
+            }
+        }
+
+        .titles {
+            float: left;
+        }
+
+        .coordinates {
+            float: right;
+            margin-top: 10mm;
+        }
+
+        .coordinates > span {
+            display: block;
+            text-align: center;
+        }
+
+        .links {
+            font-size: smaller;
+        }
+
+        .links > a {
+            color: #4e5fb8;
+        }
+
+        span {
+            margin-right: 2mm;
+        }
+
+        h3 {
+            border-bottom: solid #94baff 2px;
+        }
+
+        .education {
+            clear: both;
+        }
+
+        body {
+            width: 18cm;
+            height: 31.6cm;
+            padding: 15mm 25mm 15mm 40mm;
+            /*             border: solid 1px; */
+            font-family: 'Montserrat', sans-serif;
+            font-size: smaller;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .description {
+            font-size: smaller;
+        }
+
+        .in-margin {
+            float: left;
+            margin-left: -40mm;
+            width: 40mm;
+            text-align: center;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .skills-item {
+            width: 45%;
+            display: inline-block;
+            margin-right: 5%;
+        }
+
+        .languages-item {
+            width: 33%;
+            display: inline-block;
+        }
+
+        .interests-item .description {
+            float: left;
+        }
+
+        .language {
+            font-weight: bold;
+        }
+    </style>
+    <body></body>
+    <script>
+        function addStylesheet(reference, doc) {
+
+            const link = doc.createElement('link');
+            link.type = 'text/css';
+            link.rel = 'stylesheet';
+            link.href = reference;
+
+            doc.head.appendChild(link);
+        }
+
+        function header(i, text) {
+            const elem = document.createElement('h' + i.toString());
+            elem.innerText = text;
+            document.body.appendChild(elem);
+        }
+
+        function item(content, specs) {
+            const container = document.createElement('div');
+            container.classList.add(specs.key + "-item");
+
+            for (const [key,value] of Object.entries(content)) {
+                var element;
+                if (specs[key] === 'ignore') {
+                    continue;
+                }
+                element = document.createElement(specs[key]?.type ? specs[key].type : 'span');
+                element.classList.add(specs[key]?.class ? specs[key].class : key);
+                element.innerText = specs[key]?.text ? specs[key].text(value) : value;
+
+                container.appendChild(element);
+            }
+
+            return container;
+        }
+
+        function createSection(contents, specs) {
+            const container = document.createElement('div');
+            container.classList.add(specs.key);
+
+            const title = document.createElement('h3');
+            title.innerText = specs.name;
+            container.appendChild(title);
+
+            for (cont of contents) {
+                container.appendChild(item(cont, specs));
+            }
+
+            document.body.appendChild(container);
+
+        }
+
+        function createHeader(contents) {
+
+            const header = document.createElement('div');
+            header.classList.add("header");
+
+            const titles = document.createElement('div');
+            titles.classList.add("titles");
+
+            const name = document.createElement('h1');
+            name.innerText = contents.aboutMe.name + " " + contents.aboutMe.lastname;
+            titles.appendChild(name);
+
+            const title = document.createElement('h2');
+            title.innerText = contents.aboutMe.title;
+            titles.appendChild(title);
+
+            header.appendChild(titles);
+
+            const coordinates = document.createElement('div');
+            coordinates.classList.add("coordinates");
+
+            const address = document.createElement('span');
+            address.innerText = contents.aboutMe.address;
+            coordinates.appendChild(address);
+
+            const mobile = document.createElement('span');
+            mobile.innerText = contents.aboutMe.mobile;
+            coordinates.appendChild(mobile);
+
+            const mail = document.createElement('span');
+            mail.innerText = contents.aboutMe.email.replace('[at]', '@');
+            coordinates.appendChild(mail);
+
+            const linksElement = document.createElement('span');
+            linksElement.classList.add('links')
+            let links = ' ';
+
+            for (const [key,value] of Object.entries(contents.socialLinks)) {
+                links += ` <a href='${value}'>${key}</a> |`;
+            }
+
+            linksElement.innerHTML = links.slice(0, links.length - 1);
+
+            coordinates.appendChild(linksElement);
+
+            header.appendChild(coordinates);
+
+            document.body.appendChild(header);
+        }
+
+        function main(contents) {
+
+            createHeader(contents);
+
+            const sections = {
+                education: {
+                    name: "Education",
+                    period: {
+                        type: 'div',
+                        class: 'in-margin',
+                        text: contents=>contents[0] + " - " + contents[1]
+                    },
+                    description: {
+                        type: 'p'
+                    }
+                },
+                experience: {
+                    name: "Experience",
+                    filter: el => el.type !== 'mission',
+                    period: {
+                        type: 'div',
+                        class: 'in-margin',
+                        text: contents=>contents[0] + " - " + contents[1]
+                    },
+                    description: {
+                        type: 'p'
+                    }
+                },
+                publications: {
+                    name: "Publications",
+                    filter: (el, i) => i < 2,
+                    conference: {
+                        type: 'div',
+                        class: 'in-margin',
+                    },
+                    description: {
+                        type: 'p'
+                    },
+                    link: 'ignore'
+                },
+                skills: {
+                    name: "Skills",
+                    description: {
+                        type: 'p'
+                    }
+                },
+                languages: {
+                    name: "Languages",
+                },
+                interests: {
+                    name: "Interests",
+                }
+            }
+
+            for (const key in sections) {
+                const {filter, ...spec} = sections[key];
+                spec.key = key;
+                let content = contents[key];
+                if (filter)
+                    content = content.filter(filter);
+                createSection(content, spec);
+            }
+
+//             createSection(contents.experience.filter(c=>c.type !== 'mission'), );
+
+//             createSection(contents.publications.slice(0, 2), );
+        }
+
+        fetch("./contents.json").then(res=>res.json()).then(json=>main(json));
+    </script>
+</html>
