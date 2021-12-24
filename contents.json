@@ -11,20 +11,20 @@
   },
   "education": [
     {
-      "period": [
-        "2017",
-        "2020"
-      ],
+      "period": {
+        "from": "2017",
+        "to": "2020"
+      },
       "title": "Artificial Intelligence Engineer",
       "institution": "Ecole des Mines",
       "city": "Alès, France",
       "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data."
     },
     {
-      "period": [
-        "2015",
-        "2017"
-      ],
+      "period": {
+        "from": "2015",
+        "to": "2017"
+      },
       "title": "Preparatory classes",
       "institution": "Lycée La Merci",
       "city": "Montpellier, France",
@@ -33,10 +33,10 @@
   ],
   "experience": [
     {
-      "period": [
-        "03/2021",
-        "now"
-      ],
+      "period": {
+        "from": "03/2021",
+        "to": "now"
+      },
       "title": "Data Scientist",
       "company": "D3S",
       "city": "Grenoble, France",
@@ -44,10 +44,10 @@
       "description": "Working as a \"full-stack data-scientist\" at D3S, a small consulting company specialised in AI powered industial manufacturing cost prediction. "
     },
     {
-      "period": [
-        "03/2020",
-        "07/2020"
-      ],
+      "period": {
+        "from": "03/2020",
+        "to": "07/2020"
+      },
       "title": "Final Year Internship",
       "company": "Friedrich-Alexander-Universitat, Chair of Applied Analysis",
       "city": "Erlangen, Germany",
@@ -55,10 +55,10 @@
       "description": "Worked on data-driven modeling and system-identification out of data. Implemented state-of-the-art system identification models in Python. Deployed a POC service to identify dynamics from data with Flask."
     },
     {
-      "period": [
-        "05/2019",
-        "08/2019"
-      ],
+      "period": {
+        "from": "05/2019",
+        "to": "08/2019"
+      },
       "title": "Research Internship",
       "company": "ISCLab, Universidad de Chile",
       "city": "Santiago, Chile",
@@ -66,10 +66,10 @@
       "description": "Worked on generating obfuscation and minification rules using machine learning. Investigated methodologies for estimating the likelyhood of parts of code to be vulnerable to obfuscation. Wrote an article (see publications)."
     },
     {
-      "period": [
-        "11/2018",
-        "12/2018"
-      ],
+      "period": {
+        "from": "11/2018",
+        "to": "12/2018"
+      },
       "title": "Field Mission",
       "company": "Les Herbiers",
       "city": "Perpignan, France",
@@ -77,10 +77,10 @@
       "description": "Audited the company for the security of the employees. Updated the internal company welcome booklet."
     },
     {
-      "period": [
-        "05/2018",
-        "06/2018"
-      ],
+      "period": {
+        "from": "05/2018",
+        "to": "06/2018"
+      },
       "title": "Field Mission",
       "company": "SMERGC - Grotte Chauvet",
       "city": "Privas, France",

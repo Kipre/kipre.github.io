@@ -34,10 +34,6 @@
             color: #4e5fb8;
         }
 
-        span {
-            margin-right: 2mm;
-        }
-
         h3 {
             border-bottom: solid #94baff 2px;
         }
@@ -61,7 +57,7 @@
             font-size: smaller;
         }
 
-        .in-margin {
+        .period, .conference {
             float: left;
             margin-left: -40mm;
             width: 40mm;
@@ -72,146 +68,60 @@
             font-weight: bold;
         }
 
-        .skills-item {
+        .skills > .item {
             width: 45%;
             display: inline-block;
             margin-right: 5%;
         }
 
-        .languages-item {
+        .languages > .item {
             width: 33%;
             display: inline-block;
         }
 
-        .interests-item .description {
+        .interests > .item .description {
             float: left;
+            margin-right: 1em;
         }
 
         .language {
             font-weight: bold;
         }
     </style>
-    <body></body>
+
     <script>
-        function addStylesheet(reference, doc) {
-
-            const link = doc.createElement('link');
-            link.type = 'text/css';
-            link.rel = 'stylesheet';
-            link.href = reference;
-
-            doc.head.appendChild(link);
+        function periodRenderer({from, to}) {
+            const template = document.querySelector('#period');
+            const clone = document.importNode(template.content, true);
+            const [fromSpan, toSpan] = clone.children;
+            fromSpan.innerText = from;
+            toSpan.innerText = to;
+            return clone;
         }
 
-        function header(i, text) {
-            const elem = document.createElement('h' + i.toString());
-            elem.innerText = text;
-            document.body.appendChild(elem);
-        }
+        (async () => {
+            const req = await fetch("./contents.json")
+            const contents = await req.json();
 
-        function item(content, specs) {
-            const container = document.createElement('div');
-            container.classList.add(specs.key + "-item");
+            const [mainTitle, subtitle] = document.querySelectorAll('.titles > *')
+            mainTitle.innerText = contents.aboutMe.name + " " + contents.aboutMe.lastname;
+            subtitle.innerText = contents.aboutMe.title;
 
-            for (const [key,value] of Object.entries(content)) {
-                var element;
-                if (specs[key] === 'ignore' || key === 'type') {
-                    continue;
-                }
-                element = document.createElement(specs[key]?.type ? specs[key].type : 'span');
-                element.classList.add(specs[key]?.class ? specs[key].class : key);
-                element.innerText = specs[key]?.text ? specs[key].text(value) : value;
-
-                container.appendChild(element);
-            }
-
-            return container;
-        }
-
-        function createSection(contents, specs) {
-            const container = document.createElement('div');
-            container.classList.add(specs.key);
-
-            const title = document.createElement('h3');
-            title.innerText = specs.name;
-            container.appendChild(title);
-
-            for (cont of contents) {
-                container.appendChild(item(cont, specs));
-            }
-
-            document.body.appendChild(container);
-
-        }
-
-        function createHeader(contents) {
-
-            const header = document.createElement('div');
-            header.classList.add("header");
-
-            const titles = document.createElement('div');
-            titles.classList.add("titles");
-
-            const name = document.createElement('h1');
-            name.innerText = contents.aboutMe.name + " " + contents.aboutMe.lastname;
-            titles.appendChild(name);
-
-            const title = document.createElement('h2');
-            title.innerText = contents.aboutMe.title;
-            titles.appendChild(title);
-
-            header.appendChild(titles);
-
-            const coordinates = document.createElement('div');
-            coordinates.classList.add("coordinates");
-
-            const address = document.createElement('span');
+            const [address, mobile, mail, linksElement] = document.querySelectorAll('.coordinates > *')
             address.innerText = contents.aboutMe.address;
-            coordinates.appendChild(address);
-
-            const mobile = document.createElement('span');
             mobile.innerText = contents.aboutMe.mobile;
-            coordinates.appendChild(mobile);
-
-            const mail = document.createElement('span');
             mail.innerText = contents.aboutMe.email.replace('[at]', '@');
-            coordinates.appendChild(mail);
 
-            const linksElement = document.createElement('span');
-            linksElement.classList.add('links')
             let links = ' ';
-
             for (const [key,value] of Object.entries(contents.socialLinks)) {
                 links += ` <a href='${value}'>${key}</a> |`;
             }
 
             linksElement.innerHTML = links.slice(0, links.length - 1);
 
-            coordinates.appendChild(linksElement);
-
-            header.appendChild(coordinates);
-
-            document.body.appendChild(header);
-        }
-
-        function main(contents) {
-
-            createHeader(contents);
-
             const sections = {
-                education: {
-                    name: "Education",
-                    period: {
-                        type: 'div',
-                        class: 'in-margin',
-                        text: contents=>contents[0] + " - " + contents[1]
-                    },
-                    description: {
-                        type: 'p'
-                    }
-                },
+                education: {},
                 experience: {
-                    name: "Experience",
                     filter: el => el.type !== 'mission',
                     period: {
                         type: 'div',
@@ -223,7 +133,6 @@
                     }
                 },
                 publications: {
-                    name: "Publications",
                     filter: (el, i) => i < 2,
                     conference: {
                         type: 'div',
@@ -248,16 +157,103 @@
                 }
             }
 
-            for (const key in sections) {
-                const {filter, ...spec} = sections[key];
-                spec.key = key;
-                let content = contents[key];
+            for (const section in sections) {
+                const {filter, ...specs} = sections[section];
+                let content = contents[section];
                 if (filter)
                     content = content.filter(filter);
-                createSection(content, spec);
-            }
-        }
 
-        fetch("./contents.json").then(res=>res.json()).then(json=>main(json));
+                const template = document.querySelector('#section');
+                const clone = document.importNode(template.content, true);
+                const container = clone.firstElementChild;
+                const title = container.firstElementChild;
+                container.className = section;
+                title.innerText = section[0].toUpperCase() + section.slice(1);
+
+                for (cont of content) {
+                    if (cont.type === "mission" ||
+                        cont.title?.includes?.('COVID'))
+                        continue;
+                    const template = document.getElementById(section);
+                    const clone = document.importNode(template.content, true);
+                    const item = clone.firstElementChild;
+
+                    for (const element of item.childNodes) {
+                        const key = element.className;
+                        if (key === 'period') {
+                            element.appendChild(periodRenderer(cont[key]));
+                        } else {
+                            element.innerText = cont[key];
+                        }
+                    }
+                    container.appendChild(item);
+                }
+                document.body.appendChild(container);
+            }
+        })();
     </script>
+
+    <div class="header">
+        <div class="titles">
+            <h1></h1>
+            <h2></h2>
+        </div>
+        <div class="coordinates">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="links"></span>
+        </div>
+    </div>
+    <template id='period'>
+        <span>from</span> - <span>to</span>
+    </template>
+    <template id='section'>
+        <div>
+            <h3></h3>
+        </div>
+    </template>
+    <template id='education'>
+        <div class="item">
+            <div class="period"></div>
+            <span class="title"></span>
+            <span class="institution"></span>
+            <span class="city"></span>
+            <p class="description"></p>
+        </div>
+    </template>
+    <template id='experience'>
+        <div class="item">
+            <div class="period"></div>
+            <span class="title"></span>
+            <span class="company"></span>
+            <span class="city"></span>
+            <p class="description"></p>
+        </div>
+    </template>
+    <template id='publications'>
+        <div class="item">
+            <div class="conference"></div>
+            <span class="title"></span>
+            <p class="description"></p>
+        </div>
+    </template>
+    <template id='skills'>
+        <div class="item">
+            <span class="title"></span>
+            <p class="description"></p>
+        </div>
+    </template>
+    <template id='languages'>
+        <div class="item">
+            <span class="language"></span>
+            <span class="level"></span>
+        </div>
+    </template>
+    <template id='interests'>
+        <div class="item">
+            <span class="description"></span>
+        </div>
+    </template>
+</body>
 </html>
