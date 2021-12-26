@@ -8,7 +8,7 @@
         @media print {
             body {
                 margin: 0;
-                border: 0px;
+                border: 0;
             }
         }
 
@@ -119,49 +119,15 @@
 
             linksElement.innerHTML = links.slice(0, links.length - 1);
 
-            const sections = {
-                education: {},
-                experience: {
-                    filter: el => el.type !== 'mission',
-                    period: {
-                        type: 'div',
-                        class: 'in-margin',
-                        text: contents=>contents[0] + " - " + contents[1]
-                    },
-                    description: {
-                        type: 'p'
-                    }
-                },
-                publications: {
-                    filter: (el, i) => i < 2,
-                    conference: {
-                        type: 'div',
-                        class: 'in-margin',
-                    },
-                    description: {
-                        type: 'p'
-                    },
-                    link: 'ignore'
-                },
-                skills: {
-                    name: "Skills",
-                    description: {
-                        type: 'p'
-                    }
-                },
-                languages: {
-                    name: "Languages",
-                },
-                interests: {
-                    name: "Interests",
-                }
-            }
-
-            for (const section in sections) {
-                const {filter, ...specs} = sections[section];
+            for (const section of [
+                    'education',
+                    'experience',
+                    'publications',
+                    'skills',
+                    'languages',
+                    'interests'
+                ]) {
                 let content = contents[section];
-                if (filter)
-                    content = content.filter(filter);
 
                 const template = document.querySelector('#section');
                 const clone = document.importNode(template.content, true);
