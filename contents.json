@@ -6,7 +6,8 @@
     "address": "Montpellier Area, France",
     "title": "Data Scientist",
     "mobile": "+33 6 44 72 07 41",
-    "email": "cyprien.neverov[at]mines-ales.org",
+    "email": "cyprien[at]kipr.cat",
+    "email2": "cyprien.neverov[at]mines-ales.org",
     "description": "I recently graduated from IMT Mines Ales as an Artificial Intelligence Engineer. I'm passionate about working with data and developing tools that are linked to machine learning. I also enjoy designing data-driven visualizations and user experiences on the web."
   },
   "education": [
@@ -18,7 +19,7 @@
       "title": "Artificial Intelligence Engineer",
       "institution": "Ecole des Mines",
       "city": "Alès, France",
-      "description": "Three year graduate Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data."
+      "description": "Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data."
     },
     {
       "period": {
@@ -41,7 +42,7 @@
       "company": "D3S",
       "city": "Grenoble, France",
       "type": "job",
-      "description": "Working as a \"full-stack data-scientist\" at D3S, a small consulting company specialised in AI powered industial manufacturing cost prediction. "
+      "description": "Working as a \"full-stack data-scientist\" at D3S, a small consulting company specialised in AI powered industrial manufacturing cost prediction."
     },
     {
       "period": {
@@ -113,11 +114,7 @@
   "skills": [
     {
       "title": "Python",
-      "description": "Proficient in Python (5+ years of experience) as well as some experience with the C API."
-    },
-    {
-      "title": "C/C++",
-      "description": "Worked on a few personal projects and native Python extensions."
+      "description": "Proficient in Python (5+ years of experience), its popular data-science libraries as well as some experience with the C API."
     },
     {
       "title": "JavaScript/Web",
@@ -125,11 +122,15 @@
     },
     {
       "title": "SQL/MongoDB",
-      "description": "Good knowledge of SQL and experience with non-relational DBs like MongoDB. "
+      "description": "Moderate knowledge of SQL and experience with non-relational DBs like MongoDB."
     },
     {
-      "title": "Java/Kotlin",
-      "description": "Worked on a few personal JVM powered projects."
+      "title": "Git",
+      "description": "Making use of the full potential of git on a daily basis and helping colleages."
+    },
+    {
+      "title": "Linux/Docker",
+      "description": "At ease with the linux ecosystem."
     }
   ],
   "interests": [

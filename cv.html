@@ -87,6 +87,15 @@
         .language {
             font-weight: bold;
         }
+
+        :is(.company, .institution)::after {
+            content: ' \00B7';
+        }
+
+        .city {
+            font-size: smaller;
+        }
+
     </style>
 
     <script>
