@@ -4,7 +4,8 @@
     "name": "Cyprien",
     "lastname": "Neverov",
     "address": "Montpellier Area, France",
-    "title": "Data Scientist",
+    "title2": "Data Scientist",
+    "title": "Software Engineer",
     "mobile": "+33 6 44 72 07 41",
     "email": "cyprien[at]kipr.cat",
     "email2": "cyprien.neverov[at]mines-ales.org",
@@ -16,17 +17,17 @@
         "from": "2017",
         "to": "2020"
       },
-      "title": "Artificial Intelligence Engineer",
+      "title": "Software Engineer",
       "institution": "Ecole des Mines",
       "city": "Alès, France",
-      "description": "Master's Degree in Engineering, specialized in Artificial Intelligence and Big Data."
+      "description": "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence."
     },
     {
       "period": {
         "from": "2015",
         "to": "2017"
       },
-      "title": "Preparatory classes",
+      "title": "CPGE (MPSI/MP)",
       "institution": "Lycée La Merci",
       "city": "Montpellier, France",
       "description": "Two-year undergraduate intensive course in mathematics and physics."
@@ -35,16 +36,25 @@
   "experience": [
     {
       "period": {
-        "from": "03/2021",
+        "from": "06/2024",
         "to": "now"
+      },
+      "title": "Gap year",
+      "city": "Around the world",
+      "type": "gap",
+      "description": "Took a little more than a year off to travel, reconnect with friends and family and work on many personal projects.\nThe projects relevant in this context are:\n - Built a fully custom parametric 3D model and a web-based pipeline that generates the architectural drawings of my future house (depends only on OpenIFC and Blender)\n - Ported OpenCascade to the Zig build system and developed a simple JS-based, scripted CAD program for personal use (OCCT is the only dependency)\n - Built a CNC machine"
+    },
+    {
+      "period": {
+        "from": "03/2021",
+        "to": "06/2024"
       },
       "title": "Data Scientist",
       "company": "D3S",
       "city": "Grenoble, France",
       "type": "job",
-      "description": "Working as a \"full-stack data-scientist\" at D3S, a small consulting company specialised in AI powered industrial manufacturing cost prediction."
-    },
-    {
+      "description": "Working as a \"full-stack data scientist\" at D3S, a small consulting company specializing in ML-enhanced industrial manufacturing cost prediction.\nMy tasks included:\n - Backend development in Python, implementing business requirements in a maintainable way\n - Frontend development in JS & TS with React, delivering new features quickly while improving code quality & reducing the number of dependencies\n - Managing a team of 2-4 developers, for customer and internal projects \n- Reviewing & merging contributions \n- Taking software architecture decisions on assigned projects & assisting the tech lead \n- CI/CD pipeline creation & maintenance \n- Internal IT infrastructure maintenance " }, {
+      "profile": "ignore",
       "period": {
         "from": "03/2020",
         "to": "07/2020"
@@ -56,6 +66,7 @@
       "description": "Worked on data-driven modeling and system-identification out of data. Implemented state-of-the-art system identification models in Python. Deployed a POC service to identify dynamics from data with Flask."
     },
     {
+      "profile": "ignore",
       "period": {
         "from": "05/2019",
         "to": "08/2019"
@@ -67,6 +78,7 @@
       "description": "Worked on generating obfuscation and minification rules using machine learning. Investigated methodologies for estimating the likelyhood of parts of code to be vulnerable to obfuscation. Wrote an article (see publications)."
     },
     {
+      "profile": "ignore",
       "period": {
         "from": "11/2018",
         "to": "12/2018"
@@ -78,6 +90,7 @@
       "description": "Audited the company for the security of the employees. Updated the internal company welcome booklet."
     },
     {
+      "profile": "ignore",
       "period": {
         "from": "05/2018",
         "to": "06/2018"
@@ -92,7 +105,7 @@
   "languages": [
     {
       "language": "English",
-      "level": "TOEIC 965"
+      "level": "Fluent"
     },
     {
       "language": "French",
@@ -117,25 +130,28 @@
       "description": "Proficient in Python (5+ years of experience), its popular data-science libraries as well as some experience with the C API."
     },
     {
-      "title": "JavaScript/Web",
+      "title": "JavaScript/HTML/CSS",
       "description": "Proficient in JavaScript/CSS/HTML (2+ years of experience). Solid knowledge of React and Redux. Passionate about web-based data experiences powered by D3.js."
     },
     {
-      "title": "SQL/MongoDB",
-      "description": "Moderate knowledge of SQL and experience with non-relational DBs like MongoDB."
+      "title": "Zig"
     },
     {
-      "title": "Git",
-      "description": "Making use of the full potential of git on a daily basis and helping colleages."
+      "title": "C++"
     },
     {
-      "title": "Linux/Docker",
-      "description": "At ease with the linux ecosystem."
+      "title": "Docker"
+    },
+    {
+      "title": "React"
     }
   ],
   "interests": [
     {
       "description": "Skateboarding"
+    },
+    {
+      "description": "Cycling"
     },
     {
       "description": "Woodworking"
@@ -147,16 +163,7 @@
       "description": "Electronics"
     },
     {
-      "description": "Arduino"
-    },
-    {
-      "description": "Traveling"
-    },
-    {
-      "description": "Hiking"
-    },
-    {
-      "description": "Cliff-Jumping"
+      "description": "Cars"
     }
   ],
   "blogposts": [
@@ -205,6 +212,7 @@
       "description": "Uncertain modeling of low-quality data from non-reproducible experiments. The goal is to allow uncertain hypothesis testing for unreliable data. The proposed techniques are applied to real-world clinical data of a comparison of two mattresses."
     },
     {
+      "profile": "ignore",
       "conference": "Final Year Internship, 2020",
       "link": "https://github.com/Kipre/files/blob/master/internship/reports/memoire/rapport.pdf",
       "title": "Data-driven COVID modeling.",
@@ -214,7 +222,9 @@
   "socialLinks": {
     "LinkedIn": "https://www.linkedin.com/in/cyprien-n/",
     "GitHub": "https://github.com/Kipre",
-    "Website": "https://kipre.github.io/",
     "Instagram": "https://www.instagram.com/cyprienneverov/"
+  },
+  "socialLinks1": {
+    "Website": "https://kipre.github.io/"
   }
 }
