@@ -3,6 +3,7 @@
     <header>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <title>Cyprien Neverov</title>
     </header>
     <style>
         @media print {
@@ -139,7 +140,7 @@
 
             let links = ' ';
             for (const [key,value] of Object.entries(contents.socialLinks)) {
-                links += ` <a href='${value}'>${key}</a> |`;
+                links += ` <a href='${value}'>${value}</a> |`;
             }
 
             linksElement.innerHTML = links.slice(0, links.length - 1);
