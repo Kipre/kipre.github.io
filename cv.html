@@ -1,254 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <header>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-        <title>Cyprien Neverov</title>
-    </header>
+  <header>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cyprien Neverov</title>
+  </header>
+  <body>
     <style>
-        @media print {
-            body {
-                margin: 0;
-                border: 0;
-            }
-        }
-
-        .titles {
-            float: left;
-        }
-
-        .coordinates {
-            float: right;
-            margin-top: 10mm;
-        }
-
-        .coordinates > span {
-            display: block;
-            text-align: center;
-        }
-
-        .links {
-            font-size: 0.7em;
-            a {
-              color: #4e5fb8;
-            }
-        }
-
-        h3 {
-          margin-top: 2rem;
-            border-bottom: solid #94baff 2px;
-        }
-
-        .section {
-            clear: both;
-        }
-
+      @media print {
         body {
-            width: 18cm;
-            height: 31.6cm;
-            padding-inline: 45mm 25mm;
-            padding-block: 20mm;
-            font-family: 'Montserrat', sans-serif;
-            margin-left: auto;
-            margin-right: auto;
+          margin: 0;
+          border: 0;
         }
+      }
 
-        .description {
-            font-size: smaller;
+      .titles {
+        float: left;
+      }
+
+      .coordinates {
+        float: right;
+        margin-top: 10mm;
+      }
+
+      .coordinates > span {
+        display: block;
+        text-align: center;
+      }
+
+      .links {
+        font-size: 0.7em;
+        a {
+          color: #4e5fb8;
         }
+      }
 
-        .period, .conference {
-            float: left;
-            margin-left: -40mm;
-            width: 40mm;
-            text-align: center;
-        }
+      ul {
+        padding-left: 30px;
+      }
 
-        .title {
-            font-weight: bold;
-        }
+      h3 {
+        margin-top: 2rem;
+        border-bottom: solid #94baff 2px;
+      }
 
-        .skills .title {
-          font-weight: unset;
-        }
+      .section {
+        clear: both;
+      }
 
-        .languages, .interests, .skills {
-            display: inline-block;
-            width: 100%;
-            font-size: 0.9em;
+      body {
+        --sidebar-width: 50mm;
+        width: 21cm;
+        height: 29.7cm;
+        padding-inline: calc(5mm + var(--sidebar-width)) 25mm;
+        padding-block: 20mm;
+        font-family: "Montserrat", sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.25rem;
+      }
 
-            & > div {
-                display: flex;
-                justify-content: space-between;
-            }
-        }
+      .description {
+        font-size: smaller;
+      }
 
-        [data-type="gap"] {
+      .period,
+      .conference {
+        float: left;
+        margin-left: calc(-1 * var(--sidebar-width));
+        width: var(--sidebar-width);
+        text-align: center;
+      }
+
+      .title {
+        font-weight: bold;
+      }
+
+      .skills .title {
+        font-weight: unset;
+      }
+
+      .skills-list {
+        display: inline-block;
+        width: 100%;
+        font-size: 0.9em;
+
+        display: flex;
+        justify-content: space-between;
+        &:nth-of-type(2) {
           color: grey;
-          .company {
-            display: none;
-          }
-          opacity: 0.7;
         }
-
-        .interests > .item .description {
-            float: left;
-            margin-right: 1em;
+        & + .skills-list {
+          margin-top: 1em;
         }
+      }
 
-        .language {
-            font-weight: bold;
+      .languages,
+      .interests {
+        display: inline-block;
+        width: 100%;
+        font-size: 0.9em;
+
+        & > div {
+          display: flex;
+          justify-content: space-between;
         }
+      }
 
-        .city {
-          padding-start: 1em;
+      [data-type="gap"] {
+        color: grey;
+        .company {
+          display: none;
         }
+        opacity: 0.7;
+      }
 
-        .city::before {
-            content: '\00B7';
-            margin-right: 0.3em;
-        }
+      .interests > .item .description {
+        float: left;
+        margin-right: 1em;
+      }
 
-        .city {
-            font-size: smaller;
-        }
+      .language {
+        font-weight: bold;
+      }
 
+      .city {
+        padding-start: 1em;
+      }
+
+      .city::before {
+        content: "\00B7";
+        margin-right: 0.3em;
+      }
+
+      .city {
+        font-size: smaller;
+      }
     </style>
 
-    <script>
-        function periodRenderer({from, to}) {
-            const template = document.querySelector('#period');
-            const clone = document.importNode(template.content, true);
-            const [fromSpan, toSpan] = clone.children;
-            fromSpan.innerText = from;
-            toSpan.innerText = to;
-            return clone;
-        }
-
-        (async () => {
-            const req = await fetch("./contents.json")
-            const contents = await req.json();
-
-            const [mainTitle, subtitle] = document.querySelectorAll('.titles > *')
-            mainTitle.innerText = contents.aboutMe.name + " " + contents.aboutMe.lastname;
-            subtitle.innerText = contents.aboutMe.title;
-
-            const [address, mobile, mail, linksElement] = document.querySelectorAll('.coordinates > *')
-            address.innerText = contents.aboutMe.address;
-            mobile.innerText = contents.aboutMe.mobile;
-            mail.innerText = contents.aboutMe.email.replace('[at]', '@');
-
-            let links = ' ';
-            for (const [key,value] of Object.entries(contents.socialLinks)) {
-                links += ` <a href='${value}'>${value}</a> |`;
-            }
-
-            linksElement.innerHTML = links.slice(0, links.length - 1);
-
-            for (const section of [
-                    'experience',
-                    'education',
-                    // 'publications',
-                    'skills',
-                    'languages',
-                    'interests'
-                ]) {
-                let content = contents[section];
-
-                const template = document.querySelector('#section');
-                const clone = document.importNode(template.content, true);
-                const container = clone.firstElementChild;
-                const title = container.firstElementChild;
-                container.classList.add("section");
-                container.classList.add(section);
-                title.innerText = section[0].toUpperCase() + section.slice(1);
-                const itemContainer = document.createElement("div");
-                container.appendChild(itemContainer)
-
-                for (cont of content) {
-                    if (cont.profile === "ignore")
-                        continue;
-                    const template = document.getElementById(section);
-                    const clone = document.importNode(template.content, true);
-                    const item = clone.firstElementChild;
-                    item.dataset.type = cont.type;
-
-                    for (const element of item.childNodes) {
-                        const key = element.className;
-                        if (key === 'period') {
-                            element.appendChild(periodRenderer(cont[key]));
-                        } else {
-                            element.innerText = cont[key];
-                        }
-                    }
-                    itemContainer.appendChild(item);
-                }
-                document.body.appendChild(container);
-            }
-        })();
+    <script type="module">
+      import "./cv.js";
     </script>
 
     <div class="header">
-        <div class="titles">
-            <h1></h1>
-            <h2></h2>
-        </div>
-        <div class="coordinates">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span class="links"></span>
-        </div>
+      <div class="titles">
+        <h1></h1>
+        <h2></h2>
+      </div>
+      <div class="coordinates">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="links"></span>
+      </div>
     </div>
-    <template id='period'>
-        <span>from</span> - <span>to</span>
+    <template id="period"> <span>from</span> - <span>to</span> </template>
+    <template id="section">
+      <div>
+        <h3></h3>
+      </div>
     </template>
-    <template id='section'>
-        <div>
-            <h3></h3>
-        </div>
+    <template id="education">
+      <div class="item">
+        <div class="period"></div>
+        <span class="title"></span>
+        <span class="institution"></span>
+        <span class="city"></span>
+        <p class="description"></p>
+      </div>
     </template>
-    <template id='education'>
-        <div class="item">
-            <div class="period"></div>
-            <span class="title"></span>
-            <span class="institution"></span>
-            <span class="city"></span>
-            <p class="description"></p>
-        </div>
+    <template id="experience">
+      <div class="item">
+        <div class="period"></div>
+        <span class="title"></span>
+        <span class="company"></span>
+        <span class="city"></span>
+        <p class="description"></p>
+      </div>
     </template>
-    <template id='experience'>
-        <div class="item">
-            <div class="period"></div>
-            <span class="title"></span>
-            <span class="company"></span>
-            <span class="city"></span>
-            <p class="description"></p>
-        </div>
+    <template id="publications">
+      <div class="item">
+        <div class="conference"></div>
+        <span class="title"></span>
+        <p class="description"></p>
+      </div>
     </template>
-    <template id='publications'>
-        <div class="item">
-            <div class="conference"></div>
-            <span class="title"></span>
-            <p class="description"></p>
-        </div>
+    <template id="skills">
+      <div class="item">
+        <span class="title"></span>
+        <!-- <p class="description"></p> -->
+      </div>
     </template>
-    <template id='skills'>
-        <div class="item">
-            <span class="title"></span>
-            <!-- <p class="description"></p> -->
-        </div>
+    <template id="languages">
+      <div class="item">
+        <span class="language"></span>
+        <span class="level"></span>
+      </div>
     </template>
-    <template id='languages'>
-        <div class="item">
-            <span class="language"></span>
-            <span class="level"></span>
-        </div>
+    <template id="interests">
+      <div class="item">
+        <span class="description"></span>
+      </div>
     </template>
-    <template id='interests'>
-        <div class="item">
-            <span class="description"></span>
-        </div>
-    </template>
-</body>
+  </body>
 </html>
