@@ -1,9 +1,13 @@
 // @ts-check
-import { contentFactory } from "./contents.js";
+import { contentFactory, labelFactory } from "./contents.js";
 
 const params = new URLSearchParams(window.location.search);
 
-const contents = contentFactory(params.get("flavor") || "software");
+const flavor = params.get("flavor") || "software";
+const language = params.get("lang") || "en";
+
+const contents = contentFactory(flavor, language);
+const labels = labelFactory(flavor, language);
 
 function periodRenderer({ from, to }) {
   const template = document.querySelector('#period');
@@ -90,7 +94,7 @@ function makeSection(name) {
   const title = container.firstElementChild;
   container.classList.add("section");
   container.classList.add(name);
-  title.innerText = name[0].toUpperCase() + name.slice(1);
+  title.innerText = labels[name];
   const itemContainer = document.createElement("div");
   container.appendChild(itemContainer)
   return itemContainer;

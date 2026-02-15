@@ -4,13 +4,13 @@
   * @typedef {"data" | "ai" | "software" } Flavor 
 */
 
-export const contentFactory = (/** @type {Flavor} */ flavor) => ({
+export const contentFactory = (/** @type {Flavor} */ flavor, language = "en") => ({
   title: "Cyprien Neverov",
   aboutMe: {
     name: "Cyprien",
     lastname: "Neverov",
-    address: "Montpellier Area, France",
-    title: title(flavor),
+    address: language === "en" ? "Montpellier Area, France" : "Région de Montpellier",
+    title: title(flavor, language),
     mobile: "+33 6 44 72 07 41",
     email: "cyprien[at]kipr.cat",
     description:
@@ -22,11 +22,13 @@ export const contentFactory = (/** @type {Flavor} */ flavor) => ({
         from: "2017",
         to: "2020",
       },
-      title: educationTitle(flavor),
+      title: educationTitle(flavor, language),
       institution: "Ecole des Mines",
       city: "Alès, France",
       description:
-        "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence.",
+        language === "en" ? "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence." :
+          "Diplôme d'Ingenieur généraliste avec une spécialisation en informatique et en intelligence artificielle"
+      ,
     },
     {
       period: {
@@ -37,38 +39,48 @@ export const contentFactory = (/** @type {Flavor} */ flavor) => ({
       institution: "Lycée La Merci",
       city: "Montpellier, France",
       description:
-        "Two-year undergraduate intensive course in mathematics and physics.",
+        language === "en" ? "Two-year undergraduate intensive course in mathematics and physics." :
+          "Classes préparatoires aux grandes écoles avec spécialisation en mathématiques",
     },
   ],
   experience: [
     {
       period: {
         from: "06/2024",
-        to: "now",
+        to: language === "en" ? "now": "présent",
       },
-      title: "Gap year",
-      city: "Around the world",
+      title: language === "en" ? "Gap year" : "Période de césure",
+      city: language === "en" ? "Around the world" : "France",
       type: "gap",
       description:
-        `Took a little more than a year off to travel, reconnect with friends and family and work on many personal projects.
+        language === "en" ? `Took a little more than a year off to travel, reconnect with friends and family and work on many personal projects.
 The projects relevant in this context are:
 <ul>
   <li>Built a fully custom parametric web-based 3D modeling pipeline that generates the architectural drawings of my future house (depends only on OpenIFC and Blender)</li>
   <li>Ported OpenCascade to the Zig build system and developed a simple JS-based, scripted CAD program for personal use (OCCT is the only dependency)</li>
   <li>Built a CNC machine</li>
 </ul>
-`,
+`:
+          `Presque deux ans de césure pour voyager et travailler sur des projets personnels.
+Les projets personnels pertinents par rapport à mon métier incluent:
+<ul>
+  <li>Construction d'une suite logicielle qui génère tous les plans architecturaux (2D et 3D) de ma future maison (ne dépend que d'OpenIFC et Blender)</li>
+  <li>Adaptation de OpenCascade pour utiliser le build system de Zig afin de déveloper un logiciel de CAO scriptée pour mes conceptions</li>
+  <li>Conception et construction d'une machine CNC</li>
+</ul>
+`
+      ,
     },
     {
       period: {
         from: "03/2021",
         to: "06/2024",
       },
-      title: d3sTitle(flavor),
+      title: d3sTitle(flavor, language),
       company: "D3S",
       city: "Grenoble, France",
       type: "job",
-      description: d3sDescription(flavor),
+      description: d3sDescription(flavor, language),
     },
     {
       profile: "ignore",
@@ -125,19 +137,16 @@ The projects relevant in this context are:
   ],
   languages: [
     {
-      language: "English",
-      level: "Fluent",
+      language: language === "en" ? "English" : "Anglais",
+      level: language === "en" ? "Fluent" : "Courant",
+    },
+    ...(language !== "fr" ? [{ language: "French", level: "Native", }] : []),
+    {
+      language: language === "en" ? "Russian" : "Russe",
+      level: language === "en" ? "Native" : "Courant",
     },
     {
-      language: "French",
-      level: "Native",
-    },
-    {
-      language: "Russian",
-      level: "Native",
-    },
-    {
-      language: "Spanish",
+      language: language === "en" ? "Spanish" : "Espagnol",
       level: "C1",
     },
     {
@@ -164,22 +173,22 @@ The projects relevant in this context are:
   },
   interests: [
     {
-      description: "Skateboarding",
+      description: language === "en" ? "Skateboarding" : "Skate",
     },
     {
-      description: "Cycling",
+      description: language === "en" ? "Cycling" : "Cyclisme",
     },
     {
-      description: "Woodworking",
+      description: language === "en" ? "Woodworking" : "Menuiserie",
     },
     {
       description: "Design",
     },
     {
-      description: "Electronics",
+      description: language === "en" ? "Electronics" : "Electronique",
     },
     {
-      description: "Cars",
+      description: language === "en" ? "Cars" : "Mécanique",
     },
   ],
   blogposts: [
@@ -257,40 +266,40 @@ The projects relevant in this context are:
 /**
  * @param {Flavor} flavor
  */
-function title(flavor) {
+function title(flavor, language) {
   if (flavor === "data")
     return "Data Scientist";
-  return "Software Engineer";
+  return language === "en" ? "Software Engineer" : "Ingénieur Logiciel";
 }
 
 /**
  * @param {Flavor} flavor
  */
-function educationTitle(flavor) {
+function educationTitle(flavor, language) {
   if (flavor === "data")
     return "Data Scientist";
   if (flavor === "ai")
-    return "AI Engineer";
-  return "Software Engineer";
+    return language === "en" ? "AI Engineer" : "Ingénieur IA";
+  return language === "en" ? "Software Engineer" : "Diplôme d'Ingénieur";
 }
 
 /**
  * @param {Flavor} flavor
  */
-function d3sTitle(flavor) {
+function d3sTitle(flavor, language) {
   if (flavor === "software")
-    return "Full Stack Engineer";
+    return language === "en" ? "Full Stack Engineer" : "Ingénieur Full Stack";
   return "Data Scientist";
 }
 
 /**
  * @param {Flavor} flavor
  */
-function d3sDescription(flavor) {
-  const title = flavor === "software" ? "full stack developer" : `"full stack data scientist"`;
+function d3sDescription(flavor, language) {
+  let title = flavor === "software" ? "full stack developer" : `"full stack data scientist"`;
 
-
-  return `Working as a ${title} at D3S, a small consulting company specializing in ML-enhanced large scale industrial manufacturing cost prediction.
+  if (language === "en")
+    return `Working as a ${title} at D3S, a small consulting company specializing in ML-enhanced large scale industrial manufacturing cost prediction.
 My tasks included:
 <ul>
   <li>Backend development in Python, implementing business requirements in a maintainable way</li>
@@ -299,6 +308,34 @@ My tasks included:
   <li>Reviewing & merging contributions</li>
   <li>Taking software architecture decisions on assigned projects & assisting the tech lead</li>
   <li>CI/CD pipeline creation & maintenance</li>
-  <li>Gitlab instance & CI workers maintenance</li>
+  <li>GitLab instance & CI workers maintenance</li>
 </ul>`;
+
+  title = flavor === "software" ? "Développeur full stack" : `"Data scientist full stack"`;
+
+  return `${title} chez D3S, une petite société de conseil spécialisée en prédiction de coûts de production à grande echelle pour les gros industriels français.
+Mes tâches principales incluaient:
+<ul>
+  <li>Développement backend en Python, avec mise en production d'applications utilisées par des centaines d'utilisateurs</li>
+  <li>Développement frontend avec TypeScript et React, intégration rapide de nouvelles fonctionnalités avec un accent sur la maintenabilité</li>
+  <li>Gestion d'une équipe de 2-4 développeurs, sur des projets clients et internes</li>
+  <li>Revue et intégration des contributions de l'équipe</li>
+  <li>Veille technique et architecturale avec le CTO</li>
+  <li>Developpement et maintenance des pipelines CI/CD</li>
+  <li>Déploiement et maintenance de l'instance locale GitLab</li>
+</ul>`;
+}
+
+export const labelFactory = (flavor, language) => language === "en" ? {
+  experience: "Experience",
+  education: "Education",
+  skills: "Skills",
+  languages: "Languages",
+  interests: "Interests",
+} : {
+  experience: "Expérience",
+  education: "Études",
+  skills: "Technologies",
+  languages: "Langues",
+  interests: "Intérêts",
 }
