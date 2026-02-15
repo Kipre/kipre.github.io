@@ -27,7 +27,7 @@ export const contentFactory = (/** @type {Flavor} */ flavor, language = "en") =>
       city: "Alès, France",
       description:
         language === "en" ? "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence." :
-          "Diplôme d'Ingenieur généraliste avec une spécialisation en informatique et en intelligence artificielle"
+          "Diplôme d'Ingenieur généraliste avec une spécialisation en informatique et intelligence artificielle"
       ,
     },
     {
@@ -65,7 +65,7 @@ The projects relevant in this context are:
 Les projets personnels pertinents par rapport à mon métier incluent:
 <ul>
   <li>Construction d'une suite logicielle qui génère tous les plans architecturaux (2D et 3D) de ma future maison (ne dépend que d'OpenIFC et Blender)</li>
-  <li>Adaptation de OpenCascade pour utiliser le build system de Zig afin de déveloper un logiciel de CAO scriptée pour mes conceptions</li>
+  <li>Adaptation de OpenCascade pour utiliser le build system de Zig afin de développer un logiciel de CAO scriptée pour mes conceptions</li>
   <li>Conception et construction d'une machine CNC</li>
 </ul>
 `
@@ -185,7 +185,7 @@ Les projets personnels pertinents par rapport à mon métier incluent:
       description: "Design",
     },
     {
-      description: language === "en" ? "Electronics" : "Electronique",
+      description: language === "en" ? "Electronics" : "Électronique",
     },
     {
       description: language === "en" ? "Cars" : "Mécanique",
@@ -313,7 +313,7 @@ My tasks included:
 
   title = flavor === "software" ? "Développeur full stack" : `"Data scientist full stack"`;
 
-  return `${title} chez D3S, une petite société de conseil spécialisée en prédiction de coûts de production à grande echelle pour les gros industriels français.
+  return `${title} chez D3S, une petite société de conseil spécialisée en prédiction de coûts de production à grande échelle pour les gros industriels français.
 Mes tâches principales incluaient:
 <ul>
   <li>Développement backend en Python, avec mise en production d'applications utilisées par des centaines d'utilisateurs</li>
