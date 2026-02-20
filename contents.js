@@ -1,15 +1,23 @@
 // @ts-check
 
 /**
-  * @typedef {"data" | "ai" | "software" } Flavor 
-*/
+ * @typedef {"data" | "ai" | "software" } Flavor
+ */
 
-export const contentFactory = (/** @type {Flavor} */ flavor, language = "en") => ({
+export const contentFactory = (
+  /** @type {Flavor} */ flavor,
+  language = "en",
+) => ({
   title: "Cyprien Neverov",
   aboutMe: {
     name: "Cyprien",
     lastname: "Neverov",
-    address: language === "en" ? "Montpellier Area, France" : "Région de Montpellier",
+    address:
+      language === "en"
+        ? "Montpellier Area, France"
+        : language === "cat"
+          ? "Perpinyà, Catalunya Nord"
+          : "Région de Montpellier",
     title: title(flavor, language),
     mobile: "+33 6 44 72 07 41",
     email: "cyprien[at]kipr.cat",
@@ -24,11 +32,13 @@ export const contentFactory = (/** @type {Flavor} */ flavor, language = "en") =>
       },
       title: educationTitle(flavor, language),
       institution: "Ecole des Mines",
-      city: "Alès, France",
+      city: language === "cat" ? "Alès, França" : "Alès, France",
       description:
-        language === "en" ? "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence." :
-          "Diplôme d'Ingenieur généraliste avec une spécialisation en informatique et intelligence artificielle"
-      ,
+        language === "en"
+          ? "Master's Degree in Engineering, specialized in Computer Science with a focus on Artificial Intelligence."
+          : language === "cat"
+            ? "Grau en Enginyeria amb especialització en informàtica i Intel·ligència Artificial"
+            : "Diplôme d'Ingenieur généraliste avec une spécialisation en informatique et intelligence artificielle",
     },
     {
       period: {
@@ -37,39 +47,60 @@ export const contentFactory = (/** @type {Flavor} */ flavor, language = "en") =>
       },
       title: "CPGE (MPSI/MP)",
       institution: "Lycée La Merci",
-      city: "Montpellier, France",
+      city: language === "cat" ? "Montpellier, França" : "Montpellier, France",
       description:
-        language === "en" ? "Two-year undergraduate intensive course in mathematics and physics." :
-          "Classes préparatoires aux grandes écoles avec spécialisation en mathématiques",
+        language === "en"
+          ? "Two-year undergraduate intensive course in mathematics and physics."
+          : language === "cat"
+            ? "Dos anys de preparació intensiva per a l’accés a escoles d’enginyeria a França"
+            : "Classes préparatoires aux grandes écoles avec spécialisation en mathématiques.",
     },
   ],
   experience: [
     {
       period: {
         from: "06/2024",
-        to: language === "en" ? "now": "présent",
+        to: language === "en" ? "now" : language === "cat" ? "present" : "présent",
       },
-      title: language === "en" ? "Gap year" : "Période de césure",
-      city: language === "en" ? "Around the world" : "France",
+      title:
+        language === "en"
+          ? "Gap year"
+          : language === "cat"
+            ? "Període sabàtic"
+            : "Période de césure",
+      city:
+        language === "en"
+          ? "Around the world"
+          : language === "cat"
+            ? "A través del món"
+            : "France",
       type: "gap",
       description:
-        language === "en" ? `Took a little more than a year off to travel, reconnect with friends and family and work on many personal projects.
+        language === "en"
+          ? `Took a little more than a year off to travel, reconnect with friends and family and work on many personal projects.
 The projects relevant in this context are:
 <ul>
   <li>Built a fully custom parametric web-based 3D modeling pipeline that generates the architectural drawings of my future house (depends only on OpenIFC and Blender)</li>
   <li>Ported OpenCascade to the Zig build system and developed a simple JS-based, scripted CAD program for personal use (OCCT is the only dependency)</li>
   <li>Built a CNC machine</li>
 </ul>
-`:
-          `Presque deux ans de césure pour voyager et travailler sur des projets personnels.
+`
+          : language === "cat"
+            ? `Un any i mig de període sabàtic dedicat a viatjar i desenvolupar projectes personals.
+Entre els projectes relacionats amb la meva professió destaquen:
+<ul>
+  <li>Desenvolupar un paquet de programari que generi tots els plànols arquitectònics (2D i 3D) per a la meva futura casa (basat únicament en OpenIFC i Blender)</li>
+  <li>Adaptar OpenCascade per utilitzar el sistema de compilació Zig per desenvolupar programari CAD amb scripts per als meus dissenys</li>
+  <li>Dissenyar i construir una màquina CNC</li>
+</ul>`
+            : `Presque deux ans de césure pour voyager et travailler sur des projets personnels.
 Les projets personnels pertinents par rapport à mon métier incluent:
 <ul>
   <li>Construction d'une suite logicielle qui génère tous les plans architecturaux (2D et 3D) de ma future maison (ne dépend que d'OpenIFC et Blender)</li>
   <li>Adaptation de OpenCascade pour utiliser le build system de Zig afin de développer un logiciel de CAO scriptée pour mes conceptions</li>
   <li>Conception et construction d'une machine CNC</li>
 </ul>
-`
-      ,
+`,
     },
     {
       period: {
@@ -137,58 +168,67 @@ Les projets personnels pertinents par rapport à mon métier incluent:
   ],
   languages: [
     {
-      language: language === "en" ? "English" : "Anglais",
-      level: language === "en" ? "Fluent" : "Courant",
+      language: language === "en" ? "English" : language === "cat" ? "Anglès" : "Anglais",
+      level: languageLevel(language, "fluent"),
     },
-    ...(language !== "fr" ? [{ language: "French", level: "Native", }] : []),
+    ...(language !== "fr" ? [{
+      language: language === "cat" ? "Francès" : "French", level: languageLevel(language, "native"),
+    }] : []),
     {
-      language: language === "en" ? "Russian" : "Russe",
-      level: language === "en" ? "Native" : "Courant",
-    },
-    {
-      language: language === "en" ? "Spanish" : "Espagnol",
-      level: "C1",
+      language: language === "en" ? "Russian" : language === "cat" ? "Rus" : "Russe",
+      level: languageLevel(language, "fluent"),
     },
     {
-      language: "Catalan",
-      level: "C1",
+      language: language === "en" ? "Spanish" : language === "cat" ? "Castellà" : "Espagnol",
+      level: languageLevel(language, "spoken"),
+    },
+    {
+      language: language === "cat" ? "Català" : "Catalan",
+      level: languageLevel(language, "spoken"),
     },
   ],
   skills: {
-    primary: [
-      "Python",
-      "JavaScript/TypeScript",
-      "HTML/CSS",
-      "React",
-      "Docker",
-    ],
-    secondary: [
-      "Zig",
-      "C/C++",
-      "SQL",
-      "MongoDB",
-      "CI/CD",
-      "Git",
-    ],
+    primary: ["Python", "JavaScript/TypeScript", "HTML/CSS", "React", "Docker"],
+    secondary: ["Zig", "C/C++", "SQL", "MongoDB", "CI/CD", "Git"],
   },
   interests: [
     {
-      description: language === "en" ? "Skateboarding" : "Skate",
+      description: language !== "fr" ? "Skateboarding" : "Skate",
     },
     {
-      description: language === "en" ? "Cycling" : "Cyclisme",
+      description:
+        language === "en"
+          ? "Cycling"
+          : language === "cat"
+            ? "Ciclisme"
+            : "Cyclisme",
     },
     {
-      description: language === "en" ? "Woodworking" : "Menuiserie",
+      description:
+        language === "en"
+          ? "Woodworking"
+          : language === "cat"
+            ? "Fusteria"
+            : "Menuiserie",
     },
     {
       description: "Design",
     },
     {
-      description: language === "en" ? "Electronics" : "Électronique",
+      description:
+        language === "en"
+          ? "Electronics"
+          : language === "cat"
+            ? "Electrònica"
+            : "Électronique",
     },
     {
-      description: language === "en" ? "Cars" : "Mécanique",
+      description:
+        language === "en"
+          ? "Cars"
+          : language === "cat"
+            ? "Mecànica"
+            : "Mécanique",
     },
   ],
   blogposts: [
@@ -267,20 +307,26 @@ Les projets personnels pertinents par rapport à mon métier incluent:
  * @param {Flavor} flavor
  */
 function title(flavor, language) {
-  if (flavor === "data")
-    return "Data Scientist";
-  return language === "en" ? "Software Engineer" : "Ingénieur Logiciel";
+  if (flavor === "data") return "Data Scientist";
+  return language === "en"
+    ? "Software Engineer"
+    : language === "cat"
+      ? "Enginyer de software"
+      : "Ingénieur Logiciel";
 }
 
 /**
  * @param {Flavor} flavor
  */
 function educationTitle(flavor, language) {
-  if (flavor === "data")
-    return "Data Scientist";
+  if (flavor === "data") return "Data Scientist";
   if (flavor === "ai")
     return language === "en" ? "AI Engineer" : "Ingénieur IA";
-  return language === "en" ? "Software Engineer" : "Diplôme d'Ingénieur";
+  return language === "en"
+    ? "Software Engineer"
+    : language === "cat"
+      ? "Grau en Enginyeria Informàtica"
+      : "Diplôme d'Ingénieur";
 }
 
 /**
@@ -288,7 +334,11 @@ function educationTitle(flavor, language) {
  */
 function d3sTitle(flavor, language) {
   if (flavor === "software")
-    return language === "en" ? "Full Stack Engineer" : "Ingénieur Full Stack";
+    return language === "en"
+      ? "Full Stack Engineer"
+      : language === "cat"
+        ? "Enginyer full stack"
+        : "Ingénieur Full Stack";
   return "Data Scientist";
 }
 
@@ -296,7 +346,10 @@ function d3sTitle(flavor, language) {
  * @param {Flavor} flavor
  */
 function d3sDescription(flavor, language) {
-  let title = flavor === "software" ? "full stack developer" : `"full stack data scientist"`;
+  let title =
+    flavor === "software"
+      ? "full stack developer"
+      : `"full stack data scientist"`;
 
   if (language === "en")
     return `Working as a ${title} at D3S, a small consulting company specializing in ML-enhanced large scale industrial manufacturing cost prediction.
@@ -311,7 +364,24 @@ My tasks included:
   <li>GitLab instance & CI workers maintenance</li>
 </ul>`;
 
-  title = flavor === "software" ? "Développeur full stack" : `"Data scientist full stack"`;
+  if (language === "cat")
+    return `Enginyer de programari full stack a D3S, empresa de consultoria especialitzada en la predicció de costos de fabricació industrial mitjançant tècniques de ML.
+
+Les meves tasques incloïen:
+<ul>
+  <li>Desenvolupament backend en Python, implementant els requisits de negoci de manera mantenible</li>
+  <li>Desenvolupament frontend en JS i TS amb React, oferint noves funcions ràpidament i millorant la qualitat del codi</li>
+  <li>Gestió d’un equip de 2 a 4 desenvolupadors, per a projectes de clients i interns</li>
+  <li>Revisió i fusió de contribucions</li>
+  <li>Presa de decisions arquitectòniques en els projectes assignats i donar suport al responsable tècnic</li>
+  <li>Creació i manteniment de pipelines de CI/CD</li>
+  <li>Manteniment d'instàncies de GitLab i runners de CI</li>
+</ul>`;
+
+  title =
+    flavor === "software"
+      ? "Développeur full stack"
+      : `"Data scientist full stack"`;
 
   return `${title} chez D3S, une petite société de conseil spécialisée en prédiction de coûts de production à grande échelle pour les gros industriels français.
 Mes tâches principales incluaient:
@@ -326,16 +396,60 @@ Mes tâches principales incluaient:
 </ul>`;
 }
 
-export const labelFactory = (flavor, language) => language === "en" ? {
-  experience: "Experience",
-  education: "Education",
-  skills: "Skills",
-  languages: "Languages",
-  interests: "Interests",
-} : {
-  experience: "Expérience",
-  education: "Études",
-  skills: "Technologies",
-  languages: "Langues",
-  interests: "Intérêts",
+function languageLevel(language, level) {
+  if (language === "en") {
+    switch (level) {
+      case "native":
+        return "Native";
+      case "fluent":
+        return "Fluent";
+      case "spoken":
+        return "C1";
+    }
+  }
+
+  if (language === "cat") {
+    switch (level) {
+      case "native":
+        return "nadiu";
+      case "fluent":
+        return "professional";
+      case "spoken":
+        return "conversacional";
+    }
+  }
+
+  switch (level) {
+    case "native":
+      return "Natif";
+    case "fluent":
+      return "Courant";
+    case "spoken":
+      return "C1";
+  }
 }
+
+export const labelFactory = (flavor, language) =>
+  language === "en"
+    ? {
+      experience: "Experience",
+      education: "Education",
+      skills: "Skills",
+      languages: "Languages",
+      interests: "Interests",
+    }
+    : language === "cat"
+      ? {
+        experience: "Experiència professional",
+        education: "Educació",
+        skills: "Tecnologies",
+        languages: "Idiomes",
+        interests: "Interessos",
+      }
+      : {
+        experience: "Expérience",
+        education: "Études",
+        skills: "Technologies",
+        languages: "Langues",
+        interests: "Intérêts",
+      };
